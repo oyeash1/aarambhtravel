@@ -54,7 +54,7 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Banner with video overlay and fast inquiry panel */}
-      <Hero getWhatsAppLink={calculator.getWhatsAppLink} onBookClick={handleBookClick} />
+      <Hero />
 
       {/* Quick Statistics Banner */}
       <section className="bg-slate-50 border-y border-slate-200/50 py-10">
@@ -177,52 +177,52 @@ export default function Home() {
       </Modal>
 
       {/* Terms & Conditions Modal */}
-      <Modal isOpen={isTermsOpen} onClose={() => setIsTermsOpen(false)}>
+      <Modal isOpen={isTermsOpen} onClose={() => setIsTermsOpen(false)} className="bg-white">
         <div className="flex flex-col max-h-[85vh] sm:max-h-[80vh]">
           <div className="p-4 sm:p-5 bg-primary text-white relative">
             <h3 className="text-lg sm:text-xl font-black">Terms & Conditions</h3>
             <p className="text-[10px] text-orange-300 font-semibold uppercase tracking-wider mt-0.5">
-              Aarambh Travel Pilgrimage Policy
+              Arambh Travel Pilgrimage Policy
             </p>
           </div>
-          
+
           <div className="p-4 sm:p-5 space-y-3 overflow-y-auto text-slate-700 text-xs leading-relaxed max-h-[40vh] sm:max-h-[45vh]">
             <div className="space-y-3">
               <div>
                 <h5 className="font-bold text-slate-800 text-[11px] mb-0.5">1. Booking Confirmation</h5>
                 <p className="text-slate-605">Booking confirmation will only be issued after receiving the advance or full payment.</p>
               </div>
-              
+
               <div>
                 <h5 className="font-bold text-slate-800 text-[11px] mb-0.5">2. Cancellation & Refund Policy</h5>
                 <p className="text-slate-605">Cancellation and refunds can only be processed if requested at least 18 days prior to the tour departure date (18 din pahle hi kar sakte hain tour ke).</p>
               </div>
-              
+
               <div>
                 <h5 className="font-bold text-slate-800 text-[11px] mb-0.5">3. Identification Requirements</h5>
                 <p className="text-slate-605">A valid government-issued photo ID is mandatory for all guests before boarding and during hotel check-ins.</p>
               </div>
-              
+
               <div>
                 <h5 className="font-bold text-slate-800 text-[11px] mb-0.5">4. Itinerary Alterations</h5>
                 <p className="text-slate-605">The tour schedule, trains, and visited sites may be modified or altered due to weather conditions, delays, or administrative restrictions.</p>
               </div>
-              
+
               <div>
                 <h5 className="font-bold text-slate-800 text-[11px] mb-0.5">5. Personal Belongings</h5>
-                <p className="text-slate-605">Guests are solely responsible for their personal luggage and belongings. Aarambh Travel holds no liability for any losses.</p>
+                <p className="text-slate-605">Guests are solely responsible for their personal luggage and belongings. Arambh Travel holds no liability for any losses.</p>
               </div>
-              
+
               <div>
                 <h5 className="font-bold text-slate-800 text-[11px] mb-0.5">6. Right to Refuse Service</h5>
                 <p className="text-slate-605">We reserve the right to refuse service or terminate the tour of any guest engaged in unsafe, disruptive, or illegal behavior.</p>
               </div>
-              
+
               <div>
                 <h5 className="font-bold text-slate-800 text-[11px] mb-0.5">7. Liability Limitation</h5>
-                <p className="text-slate-605">Aarambh Travel is not responsible for uncontrollable events including natural disasters, acts of God, strikes, or sudden train cancellations.</p>
+                <p className="text-slate-605">Arambh Travel is not responsible for uncontrollable events including natural disasters, acts of God, strikes, or sudden train cancellations.</p>
               </div>
-              
+
               <div>
                 <h5 className="font-bold text-slate-800 text-[11px] mb-0.5">8. Jurisdiction</h5>
                 <p className="text-slate-605">All disputes are subject to local judicial courts and legal jurisdiction only.</p>
@@ -232,39 +232,38 @@ export default function Home() {
 
           <div className="p-4 sm:p-5 border-t border-slate-200/60 bg-slate-50/50 flex flex-col gap-3">
             {termsMode === "book" ? (
-               <>
-                 <label className="flex items-start gap-2.5 cursor-pointer select-none group">
-                   <input
-                     type="checkbox"
-                     checked={termsAccepted}
-                     onChange={(e) => setTermsAccepted(e.target.checked)}
-                     className="mt-0.5 w-4 h-4 rounded accent-orange-500 cursor-pointer"
-                   />
-                   <span className="text-xs font-bold text-slate-700 group-hover:text-primary transition-colors">
-                     I accept the Terms & Conditions
-                   </span>
-                 </label>
-                 
-                 <button
-                   onClick={() => {
-                     if (termsAccepted && whatsAppLink) {
-                       window.open(whatsAppLink, "_blank");
-                       setIsTermsOpen(false);
-                     }
-                   }}
-                   disabled={!termsAccepted}
-                   className={`w-full py-3 rounded-xl font-bold text-xs tracking-wide transition-all shadow-md flex items-center justify-center gap-2 ${
-                     termsAccepted
-                       ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
-                       : "bg-slate-300 text-slate-500 cursor-not-allowed"
-                   }`}
-                 >
-                   <span>Proceed to WhatsApp</span>
-                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                     <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.335 4.978L2 22l5.133-1.347a9.917 9.917 0 004.877 1.28h.005c5.505 0 9.989-4.478 9.99-9.985A9.99 9.99 0 0012.012 2zm4.957 14.22c-.274.774-1.585 1.5-2.194 1.56-.554.055-1.282.102-2.073-.153a10.02 10.02 0 01-4.086-2.58 10.3 10.3 0 01-2.222-3.8c-.463-.794-.741-1.72-.258-2.336.21-.266.463-.56.694-.836.223-.266.297-.456.444-.76.148-.304.074-.57-.037-.798-.111-.228-.99-2.39-1.357-3.274-.356-.862-.722-.746-.99-.76h-.846c-.297 0-.773.111-1.18.56-.407.447-1.554 1.517-1.554 3.702s1.59 4.294 1.815 4.598c.224.304 3.13 4.78 7.58 6.697 1.058.456 1.884.73 2.53 1 .918.28 1.75.24 2.41.143.738-.11 2.274-.93 2.59-1.83.317-.9 3.17-9.066.02-9.066z" />
-                   </svg>
-                 </button>
-               </>
+              <>
+                <label className="flex items-start gap-2.5 cursor-pointer select-none group">
+                  <input
+                    type="checkbox"
+                    checked={termsAccepted}
+                    onChange={(e) => setTermsAccepted(e.target.checked)}
+                    className="mt-0.5 w-4 h-4 rounded accent-orange-500 cursor-pointer"
+                  />
+                  <span className="text-xs font-bold text-slate-700 group-hover:text-primary transition-colors">
+                    I accept the Terms & Conditions
+                  </span>
+                </label>
+
+                <button
+                  onClick={() => {
+                    if (termsAccepted && whatsAppLink) {
+                      window.open(whatsAppLink, "_blank");
+                      setIsTermsOpen(false);
+                    }
+                  }}
+                  disabled={!termsAccepted}
+                  className={`w-full py-3 rounded-xl font-bold text-xs tracking-wide transition-all shadow-md flex items-center justify-center gap-2 ${termsAccepted
+                      ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                      : "bg-slate-300 text-slate-500 cursor-not-allowed"
+                    }`}
+                >
+                  <span>Proceed to WhatsApp</span>
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.335 4.978L2 22l5.133-1.347a9.917 9.917 0 004.877 1.28h.005c5.505 0 9.989-4.478 9.99-9.985A9.99 9.99 0 0012.012 2zm4.957 14.22c-.274.774-1.585 1.5-2.194 1.56-.554.055-1.282.102-2.073-.153a10.02 10.02 0 01-4.086-2.58 10.3 10.3 0 01-2.222-3.8c-.463-.794-.741-1.72-.258-2.336.21-.266.463-.56.694-.836.223-.266.297-.456.444-.76.148-.304.074-.57-.037-.798-.111-.228-.99-2.39-1.357-3.274-.356-.862-.722-.746-.99-.76h-.846c-.297 0-.773.111-1.18.56-.407.447-1.554 1.517-1.554 3.702s1.59 4.294 1.815 4.598c.224.304 3.13 4.78 7.58 6.697 1.058.456 1.884.73 2.53 1 .918.28 1.75.24 2.41.143.738-.11 2.274-.93 2.59-1.83.317-.9 3.17-9.066.02-9.066z" />
+                  </svg>
+                </button>
+              </>
             ) : (
               <button
                 onClick={() => setIsTermsOpen(false)}

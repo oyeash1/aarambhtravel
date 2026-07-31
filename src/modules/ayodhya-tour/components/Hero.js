@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import GlassPanel from "../../../components/ui/GlassPanel";
-import GlassButton from "../../../components/ui/GlassButton";
 
 const slides = [
   {
@@ -10,11 +8,7 @@ const slides = [
     titlePart1: "Mumbai to ",
     titleHighlight: "Kashi",
     titlePart2: " • Prayagraj • Ayodhya",
-    description: (
-      <>
-        Experience the divine journey with <strong className="text-white font-semibold">Aarambh Travel</strong>. That covers the sacred city of Kashi, the holy Triveni Sangam at Prayagraj and the birthplace of Lord Rama in Ayodhya.
-      </>
-    )
+
   },
   {
     image: "/assets/hero_prayagraj.png",
@@ -23,11 +17,7 @@ const slides = [
     titlePart1: "Mumbai to Kashi • ",
     titleHighlight: "Prayagraj",
     titlePart2: " • Ayodhya",
-    description: (
-      <>
-        Experience the divine journey with <strong className="text-white font-semibold">Aarambh Travel</strong>. That covers the sacred city of Kashi, the holy Triveni Sangam at Prayagraj and the birthplace of Lord Rama in Ayodhya.
-      </>
-    )
+
   },
   {
     image: "/assets/hero_ayodhya.png",
@@ -36,17 +26,11 @@ const slides = [
     titlePart1: "Mumbai to Kashi • Prayagraj • ",
     titleHighlight: "Ayodhya",
     titlePart2: "",
-    description: (
-      <>
-        Experience the divine journey with <strong className="text-white font-semibold">Aarambh Travel</strong>. That covers the sacred city of Kashi, the holy Triveni Sangam at Prayagraj and the birthplace of Lord Rama in Ayodhya.
-      </>
-    )
+
   }
 ];
 
-export default function Hero({ getWhatsAppLink, onBookClick }) {
-  const [inquiryDate, setInquiryDate] = useState("16 Sept 2026");
-  const [inquiryTourists, setInquiryTourists] = useState("2");
+export default function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -88,166 +72,76 @@ export default function Hero({ getWhatsAppLink, onBookClick }) {
       </div>
 
       {/* Hero Interactive Content Area */}
-      <div className="relative z-20 max-w-7xl mx-auto px-6 w-full lg:h-full flex flex-col justify-center pt-28 lg:pt-20 pb-24 lg:pb-0">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
-          {/* Text & Offer Column */}
-          <div
-            key={activeIndex}
-            className="lg:col-span-7 text-left space-y-6 animate-fade-in-up"
-          >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 font-bold text-xs uppercase tracking-wider animate-pulse-slow">
-              {slides[activeIndex].badge}
-            </div>
+      <div className="relative z-20 max-w-4xl mx-auto px-6 w-full lg:h-full flex flex-col justify-center pt-28 lg:pt-24 pb-36 lg:pb-40">
+        <div
+          key={activeIndex}
+          className="text-center space-y-6 animate-fade-in-up flex flex-col items-center justify-center"
+        >
+          <div className="inline-flex items-center gap-2 px-2 py-1.5 rounded-full bg-red-500 text-white font-black text-xs uppercase tracking-wider shadow-lg shadow-red-600/30 animate-pulse-slow">
+            {slides[activeIndex].badge}
+          </div>
 
-            <h1 className="text-4xl sm:text-6xl font-black text-white leading-none tracking-tight">
-              {slides[activeIndex].titlePart1}
-              {slides[activeIndex].titleHighlight && (
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500">
-                  {slides[activeIndex].titleHighlight}
+          <h1 className="text-4xl sm:text-6xl font-black text-white leading-none tracking-tight">
+            {slides[activeIndex].titlePart1}
+            {slides[activeIndex].titleHighlight && (
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500">
+                {slides[activeIndex].titleHighlight}
+              </span>
+            )}
+            {slides[activeIndex].titlePart2}
+          </h1>
+
+          <div className="flex flex-wrap items-center justify-center gap-4 text-white text-lg">
+            <span className="font-semibold text-orange-400">
+              7 Days / 6 Nights Trip
+            </span>
+          </div>
+
+          <p className="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed mx-auto">
+            {slides[activeIndex].description}
+          </p>
+
+          {/* Dynamic Prices badges */}
+          <div className="flex items-center justify-center gap-6 pt-2">
+            <div className="text-white text-center">
+              <p className="text-xs text-slate-400 uppercase tracking-widest">
+                Couple Package Price
+              </p>
+              <div className="flex items-baseline justify-center gap-2">
+                <span className="text-4xl font-extrabold text-white">
+                  ₹14,800
                 </span>
-              )}
-              {slides[activeIndex].titlePart2}
-            </h1>
-
-            <div className="flex flex-wrap items-center gap-4 text-white text-lg">
-              <span className="font-semibold text-orange-400">
-                7 Days / 6 Nights Trip
-              </span>
-              <span className="text-slate-500">•</span>
-              <span className="bg-primary/40 px-3 py-1 rounded-md border border-primary/40 text-sm">
-                Train Sleeper Included
-              </span>
-            </div>
-
-            <p className="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed">
-              {slides[activeIndex].description}
-            </p>
-
-            {/* Dynamic Prices badges */}
-            <div className="flex items-center gap-6 pt-2">
-              <div className="text-white">
-                <p className="text-xs text-slate-400 uppercase tracking-widest">
-                  Couple Package Price
-                </p>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-extrabold text-white">
-                    ₹14,800
-                  </span>
-                  <span className="text-sm text-slate-400 line-through">
-                    ₹15,500
-                  </span>
-                </div>
-              </div>
-              <div className="h-10 w-px bg-slate-800" />
-              <div>
-                <span className="bg-green-500/15 border border-green-500/30 text-green-400 px-3.5 py-2 rounded-xl text-sm font-bold block">
-                  Save ₹700 Per Couple!
+                <span className="text-sm text-slate-400 line-through">
+                  ₹15,500
                 </span>
               </div>
             </div>
-
-            <div className="flex flex-wrap gap-4 pt-4">
-              <button
-                onClick={() => scrollToSection("pricing")}
-                className="px-8 py-3.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-sm tracking-wide transition-all duration-300 shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:-translate-y-0.5 cursor-pointer"
-              >
-                Book Tour Now
-              </button>
-              <button
-                onClick={() => scrollToSection("destinations")}
-                className="px-8 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/15 transition-all duration-300 cursor-pointer"
-              >
-                Explore 15+ Places
-              </button>
+            <div className="h-10 w-px bg-slate-800" />
+            <div>
+              <span className="bg-green-500/15 border border-green-500/30 text-green-400 px-3.5 py-2 rounded-xl text-sm font-bold block">
+                Save ₹700 Per Couple!
+              </span>
             </div>
           </div>
 
-          {/* Liquid Glass Search & Booking Box */}
-          <div className="lg:col-span-5 w-full flex justify-center">
-            <GlassPanel
-              animated
-              dark={true}
-              className="w-full max-w-md p-6 sm:p-8 relative overflow-hidden"
+          <div className="flex flex-wrap justify-center gap-4 pt-4">
+            <button
+              onClick={() => scrollToSection("pricing")}
+              className="px-6 py-2.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs sm:text-sm tracking-wide transition-all duration-300 shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:-translate-y-0.5 cursor-pointer"
             >
-              {/* Glow ring decoration */}
-              <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
-
-              <h3 className="text-xl font-bold mb-1 tracking-tight text-white flex items-center gap-2">
-                <span>🚩</span> Plan Your Spiritual Tour
-              </h3>
-              <p className="text-xs text-slate-300 mb-6 font-medium">
-                Select preferences to check ticket availability instantly.
-              </p>
-
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                    Destination
-                  </label>
-                  <div className="w-full px-4 py-3 rounded-xl liquid-glass-input text-sm font-semibold flex items-center bg-white/5 border border-white/15">
-                    Ayodhya Dham
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                    Tentative Travel Date
-                  </label>
-                  <select
-                    value={inquiryDate}
-                    onChange={(e) => setInquiryDate(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl liquid-glass-input text-sm font-medium focus:outline-none"
-                  >
-                    <option className="bg-slate-900" value="16 Sept 2026">16 Sept 2026</option>
-                    <option className="bg-slate-900" value="22 Sept 2026">22 Sept 2026</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                    Number of Pilgrims
-                  </label>
-                  <select
-                    value={inquiryTourists}
-                    onChange={(e) => setInquiryTourists(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl liquid-glass-input text-sm font-medium focus:outline-none"
-                  >
-                    <option className="bg-slate-900" value="1">1 Person</option>
-                    <option className="bg-slate-900" value="2">2 Persons</option>
-                    <option className="bg-slate-900" value="3">3 Persons</option>
-                    <option className="bg-slate-900" value="4">4 Persons</option>
-                    <option className="bg-slate-900" value="5">5+ Persons</option>
-                  </select>
-                </div>
-
-                <GlassButton
-                  variant="primary"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    if (onBookClick) {
-                      onBookClick(getWhatsAppLink({
-                        isHeroForm: true,
-                        date: inquiryDate,
-                        count: inquiryTourists,
-                      }));
-                    }
-                  }}
-                  className="w-full py-4 mt-6 cursor-pointer"
-                >
-                  Check Seat Availability
-                </GlassButton>
-
-                <p className="text-[10px] text-center text-slate-400 mt-4 font-medium">
-                  ⚡ Customization & AC upgrades will be configured in next step.
-                </p>
-              </div>
-            </GlassPanel>
+              Book Tour Now
+            </button>
+            <button
+              onClick={() => scrollToSection("destinations")}
+              className="px-6 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm border border-white/15 transition-all duration-300 cursor-pointer"
+            >
+              Explore 15+ Places
+            </button>
           </div>
         </div>
 
         {/* Carousel Dots */}
-        <div className="absolute bottom-8 lg:bottom-20 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
+        <div className="absolute bottom-10 lg:bottom-28 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
           {slides.map((_, idx) => (
             <button
               key={idx}
@@ -263,7 +157,7 @@ export default function Hero({ getWhatsAppLink, onBookClick }) {
 
         {/* Floating Arrow down */}
         <div
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-1 cursor-pointer opacity-70 hover:opacity-100 transition-opacity"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-1 cursor-pointer opacity-70 hover:opacity-100 transition-opacity"
           onClick={() => scrollToSection("destinations")}
         >
           <span className="text-[10px] font-bold text-white uppercase tracking-widest">

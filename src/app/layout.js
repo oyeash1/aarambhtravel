@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Aarambh Travel",
+  title: "Arambh Travel",
   description: "Travel With Comfort",
 };
 

@@ -19,7 +19,7 @@ export default function useBookingCalculator() {
   };
 
   const getPerPersonCost = () => {
-    let cost = BASE_PRICE_SLEEPER;
+    let cost = packageType === "couple" ? BASE_PRICE_SLEEPER : ORIGINAL_PRICE;
     if (acTrain) cost += AC_TRAIN_UPGRADE_COST;
     return cost;
   };
@@ -63,8 +63,8 @@ export default function useBookingCalculator() {
 
     const packageText = packageType === "couple" ? "Couple Tour" : "Standard Tour";
 
-    const message = `🚩 *Aarambh Travel - AYODHYA TRIP BOOKING* 🚩\n\nI want to book the Ayodhya ${packageText}${dateText}.\n\n*Details:*\n• Package Type: ${packageType === "couple" ? "Couple Package" : "Standard Package"}\n• Number of Tourists: ${num}\n• Train Class: ${trainText}\n• Room Accommodation: ${roomText}\n• Pricing: ${priceText}\n\nPlease confirm availability and next steps!`;
-    return `https://wa.me/919082541206?text=${encodeURIComponent(message)}`;
+    const message = `🚩 *Arambh Travel - AYODHYA TRIP BOOKING* 🚩\n\nI want to book the Ayodhya ${packageText}${dateText}.\n\n*Details:*\n• Package Type: ${packageType === "couple" ? "Couple Package" : "Standard Package"}\n• Number of Tourists: ${num}\n• Train Class: ${trainText}\n• Room Accommodation: ${roomText}\n• Pricing: ${priceText}\n\nPlease confirm availability and next steps!`;
+    return `https://wa.me/916307443201?text=${encodeURIComponent(message)}`;
   };
 
   return {

@@ -35,7 +35,7 @@ export default function Navbar() {
           <div className="relative w-11 h-11 bg-white rounded-xl overflow-hidden shadow-md border border-slate-100 flex items-center justify-center p-1 group-hover:scale-105 transition-transform duration-300">
             <Image
               src="/logo.png"
-              alt="Aarambh Travel Logo"
+              alt="Arambh Travel Logo"
               width={40}
               height={40}
               className="object-contain"
@@ -46,7 +46,7 @@ export default function Navbar() {
               className={`font-extrabold text-xl tracking-tight transition-colors duration-300 ${isScrolled ? "text-primary" : "text-white"
                 }`}
             >
-              Aarambh Travel
+              Arambh Travel
             </span>
             <p
               className={`text-[9px] uppercase tracking-widest font-semibold transition-colors duration-300 ${isScrolled ? "text-slate-500" : "text-slate-300"

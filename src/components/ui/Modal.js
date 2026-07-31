@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Modal({ isOpen, onClose, children }) {
+export default function Modal({ isOpen, onClose, children, className = "liquid-glass-panel" }) {
   if (!isOpen) return null;
 
   return (
@@ -8,7 +8,7 @@ export default function Modal({ isOpen, onClose, children }) {
       {/* Backdrop click closer */}
       <div className="absolute inset-0" onClick={onClose} />
       
-      <div className="relative w-full max-w-lg liquid-glass-panel rounded-3xl overflow-hidden shadow-2xl flex flex-col z-10 animate-in fade-in zoom-in-95 duration-200">
+      <div className={`relative w-full max-w-lg ${className} rounded-3xl overflow-hidden shadow-2xl flex flex-col z-10 animate-in fade-in zoom-in-95 duration-200`}>
         {/* Close Button */}
         <button
           onClick={onClose}
