@@ -17,14 +17,14 @@ export default function Footer() {
             <div className="w-10 h-10 bg-white rounded-lg overflow-hidden flex items-center justify-center p-1 border border-slate-800">
               <Image
                 src="/logo.png"
-                alt="JK Adventure Logo"
+                alt="Aarambh Travel Logo"
                 width={36}
                 height={36}
                 className="object-contain"
               />
             </div>
             <span className="font-extrabold text-lg text-white tracking-tight">
-              JK ADVENTURE
+              Aarambh Travel
             </span>
           </div>
           <p className="text-xs leading-relaxed max-w-sm">
@@ -78,7 +78,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-6 border-t border-slate-900 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center">
         <p className="text-[11px]">
-          &copy; 2026 JK Adventure. All rights reserved. Tour itinerary, terms,
+          &copy; 2026 Aarambh Travel. All rights reserved. Tour itinerary, terms,
           and transport rates subject to railway guidelines.
         </p>
         <div className="flex gap-6 text-[11px]">

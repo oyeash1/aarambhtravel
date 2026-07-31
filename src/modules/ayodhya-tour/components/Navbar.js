@@ -25,18 +25,17 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
           ? "py-3 bg-white/90 backdrop-blur-lg border-b border-slate-200/50 shadow-md"
           : "py-6 bg-transparent"
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3 group">
           <div className="relative w-11 h-11 bg-white rounded-xl overflow-hidden shadow-md border border-slate-100 flex items-center justify-center p-1 group-hover:scale-105 transition-transform duration-300">
             <Image
               src="/logo.png"
-              alt="JK Adventure Logo"
+              alt="Aarambh Travel Logo"
               width={40}
               height={40}
               className="object-contain"
@@ -44,16 +43,14 @@ export default function Navbar() {
           </div>
           <div>
             <span
-              className={`font-extrabold text-xl tracking-tight transition-colors duration-300 ${
-                isScrolled ? "text-primary" : "text-white"
-              }`}
+              className={`font-extrabold text-xl tracking-tight transition-colors duration-300 ${isScrolled ? "text-primary" : "text-white"
+                }`}
             >
-              JK ADVENTURE
+              Aarambh Travel
             </span>
             <p
-              className={`text-[9px] uppercase tracking-widest font-semibold transition-colors duration-300 ${
-                isScrolled ? "text-slate-500" : "text-slate-300"
-              }`}
+              className={`text-[9px] uppercase tracking-widest font-semibold transition-colors duration-300 ${isScrolled ? "text-slate-500" : "text-slate-300"
+                }`}
             >
               Travel With Comfort
             </p>
@@ -64,33 +61,29 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center gap-8 font-medium text-sm">
           <button
             onClick={() => scrollToSection("destinations")}
-            className={`hover:text-accent transition-colors duration-300 cursor-pointer ${
-              isScrolled ? "text-slate-600" : "text-white"
-            }`}
+            className={`hover:text-accent transition-colors duration-300 cursor-pointer ${isScrolled ? "text-slate-600" : "text-white"
+              }`}
           >
             Destinations
           </button>
           <button
             onClick={() => scrollToSection("inclusions")}
-            className={`hover:text-accent transition-colors duration-300 cursor-pointer ${
-              isScrolled ? "text-slate-600" : "text-white"
-            }`}
+            className={`hover:text-accent transition-colors duration-300 cursor-pointer ${isScrolled ? "text-slate-600" : "text-white"
+              }`}
           >
             Inclusions
           </button>
           <button
             onClick={() => scrollToSection("itinerary")}
-            className={`hover:text-accent transition-colors duration-300 cursor-pointer ${
-              isScrolled ? "text-slate-600" : "text-white"
-            }`}
+            className={`hover:text-accent transition-colors duration-300 cursor-pointer ${isScrolled ? "text-slate-600" : "text-white"
+              }`}
           >
             Itinerary
           </button>
           <button
             onClick={() => scrollToSection("pricing")}
-            className={`hover:text-accent transition-colors duration-300 cursor-pointer ${
-              isScrolled ? "text-slate-600" : "text-white"
-            }`}
+            className={`hover:text-accent transition-colors duration-300 cursor-pointer ${isScrolled ? "text-slate-600" : "text-white"
+              }`}
           >
             Pricing Calculator
           </button>

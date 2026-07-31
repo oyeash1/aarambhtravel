@@ -1,10 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GlassPanel from "../../../components/ui/GlassPanel";
 import GlassButton from "../../../components/ui/GlassButton";
+
+const slides = [
+  {
+    image: "/assets/hero_kashi.png",
+    position: "bg-[position:35%_50%] sm:bg-center",
+    badge: "✨ Explore India's Holiest Cities",
+    titlePart1: "Mumbai to ",
+    titleHighlight: "Kashi",
+    titlePart2: " • Prayagraj • Ayodhya",
+    description: (
+      <>
+        Experience the divine journey with <strong className="text-white font-semibold">Aarambh Travel</strong>. That covers the sacred city of Kashi, the holy Triveni Sangam at Prayagraj and the birthplace of Lord Rama in Ayodhya.
+      </>
+    )
+  },
+  {
+    image: "/assets/hero_prayagraj.png",
+    position: "bg-[position:65%_50%] sm:bg-center",
+    badge: "✨ Holy Triveni Sangam",
+    titlePart1: "Mumbai to Kashi • ",
+    titleHighlight: "Prayagraj",
+    titlePart2: " • Ayodhya",
+    description: (
+      <>
+        Experience the divine journey with <strong className="text-white font-semibold">Aarambh Travel</strong>. That covers the sacred city of Kashi, the holy Triveni Sangam at Prayagraj and the birthplace of Lord Rama in Ayodhya.
+      </>
+    )
+  },
+  {
+    image: "/assets/hero_ayodhya.png",
+    position: "bg-[position:center_top] sm:bg-center",
+    badge: "✨ Shri Ram Janmabhoomi",
+    titlePart1: "Mumbai to Kashi • Prayagraj • ",
+    titleHighlight: "Ayodhya",
+    titlePart2: "",
+    description: (
+      <>
+        Experience the divine journey with <strong className="text-white font-semibold">Aarambh Travel</strong>. That covers the sacred city of Kashi, the holy Triveni Sangam at Prayagraj and the birthplace of Lord Rama in Ayodhya.
+      </>
+    )
+  }
+];
 
 export default function Hero({ getWhatsAppLink }) {
   const [inquiryDate, setInquiryDate] = useState("");
   const [inquiryTourists, setInquiryTourists] = useState("2");
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % slides.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [activeIndex, isPaused]);
 
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
@@ -14,48 +66,47 @@ export default function Hero({ getWhatsAppLink }) {
   };
 
   return (
-    <section className="relative min-h-screen lg:h-screen w-full flex items-center justify-center overflow-hidden bg-slate-950">
+    <section
+      className="relative min-h-screen lg:h-screen w-full flex items-center justify-center overflow-hidden bg-slate-950"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       {/* Full screen Video Frame / Background fallback */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-[110vh] lg:h-full pointer-events-none select-none overflow-hidden">
         {/* Loop gradient fallback overlay */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#0F3D91]/50 via-slate-950/70 to-slate-950/95" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#0F3D91]/40 via-slate-950/75 to-slate-950" />
 
-        {/* User video tag frame (Uncomment and specify a valid src to use a video background) */}
-        {/*
-        <video
-          className="w-full h-full object-cover scale-105"
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/assets/hero_ayodhya.png"
-          src=""
-        >
-          <source src="" type="video/mp4" />
-        </video>
-        */}
-
-        {/* Dynamic background if no video is playing */}
-        <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-1000 scale-105"
-          style={{ backgroundImage: `url('/assets/hero_ayodhya.png')` }}
-        />
+        {/* Dynamic background images with smooth fade */}
+        {slides.map((slide, idx) => (
+          <div
+            key={idx}
+            className={`absolute inset-0 w-full h-full bg-cover ${slide.position} transition-opacity duration-1000 ease-in-out scale-105 ${idx === activeIndex ? "opacity-100" : "opacity-0"
+              }`}
+            style={{ backgroundImage: `url('${slide.image}')` }}
+          />
+        ))}
       </div>
 
       {/* Hero Interactive Content Area */}
       <div className="relative z-20 max-w-7xl mx-auto px-6 w-full lg:h-full flex flex-col justify-center pt-28 lg:pt-20 pb-12 lg:pb-0">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           {/* Text & Offer Column */}
-          <div className="lg:col-span-7 text-left space-y-6">
+          <div
+            key={activeIndex}
+            className="lg:col-span-7 text-left space-y-6 animate-fade-in-up"
+          >
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 font-bold text-xs uppercase tracking-wider animate-pulse-slow">
-              ✨ Monsoon Season Special Offer
+              {slides[activeIndex].badge}
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-black text-white leading-none tracking-tight">
-              Mumbai to{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500">
-                AYODHYA
-              </span>
+              {slides[activeIndex].titlePart1}
+              {slides[activeIndex].titleHighlight && (
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500">
+                  {slides[activeIndex].titleHighlight}
+                </span>
+              )}
+              {slides[activeIndex].titlePart2}
             </h1>
 
             <div className="flex flex-wrap items-center gap-4 text-white text-lg">
@@ -69,10 +120,7 @@ export default function Hero({ getWhatsAppLink }) {
             </div>
 
             <p className="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed">
-              Embark on a divine journey with{" "}
-              <strong className="text-white font-semibold">JK Adventure</strong>.
-              Travel with absolute comfort, witness spectacular LED temple shows,
-              and return home with timeless spiritual memories.
+              {slides[activeIndex].description}
             </p>
 
             {/* Dynamic Prices badges */}
@@ -126,7 +174,7 @@ export default function Hero({ getWhatsAppLink }) {
               <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
 
               <h3 className="text-xl font-bold mb-1 tracking-tight text-white flex items-center gap-2">
-                <span>🚩</span> Plan Your Holy Tour
+                <span>🚩</span> Plan Your Spiritual Tour
               </h3>
               <p className="text-xs text-slate-300 mb-6 font-medium">
                 Select preferences to check ticket availability instantly.
@@ -138,7 +186,7 @@ export default function Hero({ getWhatsAppLink }) {
                     Destination
                   </label>
                   <div className="w-full px-4 py-3 rounded-xl liquid-glass-input text-sm font-semibold flex items-center bg-white/5 border border-white/15">
-                    Ayodhya Dham (Monsoon Offer)
+                    Ayodhya Dham
                   </div>
                 </div>
 
@@ -193,6 +241,21 @@ export default function Hero({ getWhatsAppLink }) {
               </div>
             </GlassPanel>
           </div>
+        </div>
+
+        {/* Carousel Dots */}
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
+          {slides.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setActiveIndex(idx)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 border-2 cursor-pointer ${idx === activeIndex
+                ? "bg-orange-500 border-orange-500 scale-125 shadow-md shadow-orange-500/50"
+                : "bg-transparent border-white/60 hover:border-white hover:bg-white/20"
+                }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
         </div>
 
         {/* Floating Arrow down */}

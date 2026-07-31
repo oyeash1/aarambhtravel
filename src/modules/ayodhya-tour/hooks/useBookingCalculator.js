@@ -40,19 +40,19 @@ export default function useBookingCalculator() {
     const trainText = isHeroForm
       ? "Sleeper Class"
       : acTrain
-      ? "AC Train Coach"
-      : "Sleeper Class";
+        ? "AC Train Coach"
+        : "Sleeper Class";
     const roomText = isHeroForm
       ? "Standard Room"
       : acRoom
-      ? "AC Guest Room"
-      : "Non-AC Guest Room";
+        ? "AC Guest Room"
+        : "Non-AC Guest Room";
     const priceText = isHeroForm
       ? "₹14,499 per person"
       : `Total: ₹${totalCost.toLocaleString("en-IN")}/-`;
     const dateText = date ? ` for date: ${date}` : "";
 
-    const message = `🚩 *JK ADVENTURE - AYODHYA TRIP BOOKING* 🚩\n\nI want to book the Ayodhya Monsoon Tour${dateText}.\n\n*Details:*\n• Number of Tourists: ${num}\n• Train Class: ${trainText}\n• Room Accommodation: ${roomText}\n• Pricing: ${priceText}\n\nPlease confirm availability and next steps!`;
+    const message = `🚩 *Aarambh Travel - AYODHYA TRIP BOOKING* 🚩\n\nI want to book the Ayodhya Monsoon Tour${dateText}.\n\n*Details:*\n• Number of Tourists: ${num}\n• Train Class: ${trainText}\n• Room Accommodation: ${roomText}\n• Pricing: ${priceText}\n\nPlease confirm availability and next steps!`;
     return `https://wa.me/916307443201?text=${encodeURIComponent(message)}`;
   };
 
