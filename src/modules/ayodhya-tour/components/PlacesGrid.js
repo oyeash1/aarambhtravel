@@ -23,12 +23,11 @@ export default function PlacesGrid({ onSelectPlace }) {
             Divine Itinerary Locations
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight mt-4 mb-6">
-            Places You Will Visit In Ayodhya
+            Places You Will Visit In Kashi • Prayagraj • Ayodhya
           </h2>
           <p className="text-slate-600 text-sm leading-relaxed">
-            Explore 14 legendary sacred destinations associated with the life of
-            Lord Rama. Hover over each card to view details or use the search bar
-            to locate specific points.
+            Explore 15 legendary sacred destinations across Kashi, Prayagraj, and Ayodhya.
+            Hover over each card to view details or use the search bar to locate specific points.
           </p>
 
           {/* Search input */}

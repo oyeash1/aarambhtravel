@@ -1,11 +1,11 @@
 import React from "react";
 
 export default function Pricing({
+  packageType,
+  handlePackageTypeChange,
   tourists,
   acTrain,
   setAcTrain,
-  acRoom,
-  setAcRoom,
   perPersonCost,
   totalCost,
   totalOriginal,
@@ -13,6 +13,7 @@ export default function Pricing({
   incrementTourists,
   decrementTourists,
   getWhatsAppLink,
+  onBookClick,
 }) {
   return (
     <section
@@ -34,10 +35,9 @@ export default function Pricing({
               Calculate & Customize Your Tour Package
             </h2>
             <p className="text-slate-650 text-sm leading-relaxed">
-              Use our dynamic price calculator to configure train seat upgrades
-              or hotel room enhancements. Get a transparent total calculation
-              instantly, then click to book directly on WhatsApp with pre-filled
-              settings.
+              Use our dynamic price calculator to configure train seat upgrades.
+              Get a transparent total calculation instantly, then click to book
+              directly on WhatsApp with pre-filled settings.
             </p>
 
             <div className="p-6 rounded-2xl liquid-glass-card space-y-4">
@@ -54,7 +54,7 @@ export default function Pricing({
                   ✓
                 </div>
                 <span className="text-xs font-semibold text-slate-700">
-                  Monsoon discount applied automatically
+                  {packageType === "couple" ? "Couple discount applied automatically" : "Standard discount applied automatically"}
                 </span>
               </div>
               <div className="flex items-center gap-3">
@@ -70,16 +70,46 @@ export default function Pricing({
 
           {/* Right Calculator Card */}
           <div className="lg:col-span-7">
-            <div className="liquid-glass-card rounded-3xl p-8 md:p-10 relative overflow-hidden">
+            <div className="liquid-glass-card rounded-3xl p-5 sm:p-6 md:p-8 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-24 h-24 bg-orange-500/10 rounded-full blur-2xl pointer-events-none" />
-              <h3 className="text-xl font-bold text-slate-800 mb-6 pb-4 border-b border-white/40 flex items-center justify-between">
+              <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-4 pb-3 border-b border-white/40 flex items-center justify-between">
                 <span>Price Configurator</span>
-                <span className="text-xs font-bold bg-green-500/10 text-green-600 px-3 py-1 rounded-full uppercase">
-                  Monsoon Offer Active
-                </span>
+                {packageType === "couple" ? (
+                  <span className="text-xs font-bold bg-green-500/10 text-green-600 px-3 py-1 rounded-full uppercase">
+                    Couple Offer Active
+                  </span>
+                ) : (
+                  <span className="text-xs font-bold bg-primary/10 text-primary px-3 py-1 rounded-full uppercase">
+                    Standard Package
+                  </span>
+                )}
               </h3>
 
-              <div className="space-y-6">
+              {/* Package Segment Control */}
+              <div className="flex bg-white/20 backdrop-blur-md p-1 rounded-2xl border border-white/40 mb-4 sm:mb-6">
+                <button
+                  onClick={() => handlePackageTypeChange("couple")}
+                  className={`flex-1 py-3 text-center text-xs font-bold rounded-xl transition-all cursor-pointer ${
+                    packageType === "couple"
+                      ? "bg-primary text-white shadow-md"
+                      : "text-slate-700 hover:bg-white/20"
+                  }`}
+                >
+                  Couple Package
+                </button>
+                <button
+                  onClick={() => handlePackageTypeChange("normal")}
+                  className={`flex-1 py-3 text-center text-xs font-bold rounded-xl transition-all cursor-pointer ${
+                    packageType === "normal"
+                      ? "bg-primary text-white shadow-md"
+                      : "text-slate-700 hover:bg-white/20"
+                  }`}
+                >
+                  Standard Package
+                </button>
+              </div>
+
+              <div className="space-y-4 sm:space-y-5">
                 {/* Tourists Counter */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
@@ -87,13 +117,20 @@ export default function Pricing({
                       Number of Pilgrims
                     </h4>
                     <p className="text-xs text-slate-550">
-                      Calculate total for family/group booking
+                      {packageType === "couple"
+                        ? "Fixed at 2 persons for couple package"
+                        : "Calculate total for family/group booking"}
                     </p>
                   </div>
                   <div className="flex items-center gap-4">
                     <button
-                      onClick={decrementTourists}
-                      className="w-10 h-10 rounded-xl bg-white/40 hover:bg-white/70 border border-white/60 text-slate-700 font-extrabold flex items-center justify-center transition-colors cursor-pointer"
+                      onClick={packageType === "couple" ? null : decrementTourists}
+                      className={`w-10 h-10 rounded-xl border font-extrabold flex items-center justify-center transition-colors ${
+                        packageType === "couple"
+                          ? "bg-white/10 border-white/10 text-slate-400 cursor-not-allowed opacity-50"
+                          : "bg-white/40 hover:bg-white/70 border border-white/60 text-slate-700 cursor-pointer"
+                      }`}
+                      disabled={packageType === "couple"}
                     >
                       -
                     </button>
@@ -101,18 +138,23 @@ export default function Pricing({
                       {tourists}
                     </span>
                     <button
-                      onClick={incrementTourists}
-                      className="w-10 h-10 rounded-xl bg-white/40 hover:bg-white/70 border border-white/60 text-slate-700 font-extrabold flex items-center justify-center transition-colors cursor-pointer"
+                      onClick={packageType === "couple" ? null : incrementTourists}
+                      className={`w-10 h-10 rounded-xl border font-extrabold flex items-center justify-center transition-colors ${
+                        packageType === "couple"
+                          ? "bg-white/10 border-white/10 text-slate-400 cursor-not-allowed opacity-50"
+                          : "bg-white/40 hover:bg-white/70 border border-white/60 text-slate-700 cursor-pointer"
+                      }`}
+                      disabled={packageType === "couple"}
                     >
                       +
                     </button>
                   </div>
                 </div>
 
-                <hr className="border-white/30" />
+                <hr className="border-white/20" />
 
                 {/* Train Class Config */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
                   <div>
                     <h4 className="font-bold text-slate-800 text-sm">
                       Train Coach Selection
@@ -145,44 +187,10 @@ export default function Pricing({
                   </div>
                 </div>
 
-                <hr className="border-white/30" />
 
-                {/* Hotel Room Config */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div>
-                    <h4 className="font-bold text-slate-800 text-sm">
-                      Guest Room Type
-                    </h4>
-                    <p className="text-xs text-slate-550">
-                      Upgrade lodging to Air-Conditioned room
-                    </p>
-                  </div>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => setAcRoom(false)}
-                      className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
-                        !acRoom
-                          ? "bg-primary border-primary text-white"
-                          : "border-white/60 bg-white/30 text-slate-700 hover:bg-white/60"
-                      }`}
-                    >
-                      Standard Room (Included)
-                    </button>
-                    <button
-                      onClick={() => setAcRoom(true)}
-                      className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
-                        acRoom
-                          ? "bg-primary border-primary text-white"
-                          : "border-white/60 bg-white/30 text-slate-700 hover:bg-white/60"
-                      }`}
-                    >
-                      AC Room Upgrade (+₹1500/person)
-                    </button>
-                  </div>
-                </div>
 
                 {/* Total Calculations Panel */}
-                <div className="bg-white/40 backdrop-blur-sm p-6 rounded-2xl border border-white/60 mt-8 space-y-4">
+                <div className="bg-white/40 backdrop-blur-sm p-4 sm:p-5 rounded-2xl border border-white/60 mt-4 sm:mt-6 space-y-2.5 sm:space-y-3">
                   <div className="flex items-center justify-between text-xs text-slate-550">
                     <span>Per Person Package Cost:</span>
                     <span className="font-bold text-slate-800">
@@ -198,7 +206,7 @@ export default function Pricing({
                   </div>
 
                   <div className="flex items-center justify-between text-sm text-green-600 font-bold">
-                    <span>Monsoon Saving Discount:</span>
+                    <span>{packageType === "couple" ? "Couple Saving Discount:" : "Saving Discount:"}</span>
                     <span>- ₹{savings.toLocaleString("en-IN")}</span>
                   </div>
 
@@ -220,17 +228,19 @@ export default function Pricing({
                 </div>
 
                 {/* Book button redirecting to WhatsApp */}
-                <a
-                  href={getWhatsAppLink()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl bg-green-600 hover:bg-green-700 text-white font-bold text-sm tracking-wide shadow-md transition-all hover:-translate-y-0.5 cursor-pointer"
+                <button
+                  onClick={() => {
+                    if (onBookClick) {
+                      onBookClick(getWhatsAppLink());
+                    }
+                  }}
+                  className="w-full flex items-center justify-center gap-3 py-3 sm:py-3.5 rounded-2xl bg-green-600 hover:bg-green-700 text-white font-bold text-sm tracking-wide shadow-md transition-all hover:-translate-y-0.5 cursor-pointer border-none"
                 >
                   <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                     <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.335 4.978L2 22l5.133-1.347a9.917 9.917 0 004.877 1.28h.005c5.505 0 9.989-4.478 9.99-9.985A9.99 9.99 0 0012.012 2zm4.957 14.22c-.274.774-1.585 1.5-2.194 1.56-.554.055-1.282.102-2.073-.153a10.02 10.02 0 01-4.086-2.58 10.3 10.3 0 01-2.222-3.8c-.463-.794-.741-1.72-.258-2.336.21-.266.463-.56.694-.836.223-.266.297-.456.444-.76.148-.304.074-.57-.037-.798-.111-.228-.99-2.39-1.357-3.274-.356-.862-.722-.746-.99-.76h-.846c-.297 0-.773.111-1.18.56-.407.447-1.554 1.517-1.554 3.702s1.59 4.294 1.815 4.598c.224.304 3.13 4.78 7.58 6.697 1.058.456 1.884.73 2.53 1 .918.28 1.75.24 2.41.143.738-.11 2.274-.93 2.59-1.83.317-.9 3.17-9.066.02-9.066z" />
                   </svg>
                   Book Now via WhatsApp
-                </a>
+                </button>
               </div>
             </div>
           </div>

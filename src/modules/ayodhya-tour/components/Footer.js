@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-export default function Footer() {
+export default function Footer({ onTermsClick }) {
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -46,7 +46,7 @@ export default function Footer() {
                 onClick={() => scrollToSection("destinations")}
                 className="hover:text-white transition-colors cursor-pointer text-left"
               >
-                Mumbai to Ayodhya Monsoon Special
+                Mumbai to Ayodhya Couple Special
               </button>
             </li>
             <li>7 Days / 6 Nights Complete Pilgrimage</li>
@@ -65,12 +65,12 @@ export default function Footer() {
           </p>
           <div className="pt-2">
             <a
-              href="https://wa.me/916307443201"
+              href="https://wa.me/919082541206"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-orange-500 text-white font-bold text-xs hover:bg-orange-600 transition-all shadow-md shadow-orange-500/10 cursor-pointer"
             >
-              WhatsApp: 6307443201
+              WhatsApp: 9082541206
             </a>
           </div>
         </div>
@@ -82,9 +82,15 @@ export default function Footer() {
           and transport rates subject to railway guidelines.
         </p>
         <div className="flex gap-6 text-[11px]">
-          <a href="#" className="hover:text-white">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              if (onTermsClick) onTermsClick();
+            }}
+            className="hover:text-white bg-transparent border-none p-0 cursor-pointer text-[11px] text-slate-400 font-medium"
+          >
             Terms of Service
-          </a>
+          </button>
           <a href="#" className="hover:text-white">
             Privacy Policy
           </a>

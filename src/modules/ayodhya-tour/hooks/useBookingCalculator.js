@@ -7,21 +7,26 @@ import {
 } from "../constants/tourData";
 
 export default function useBookingCalculator() {
+  const [packageType, setPackageType] = useState("couple");
   const [tourists, setTourists] = useState(2);
   const [acTrain, setAcTrain] = useState(false);
-  const [acRoom, setAcRoom] = useState(false);
+
+  const handlePackageTypeChange = (type) => {
+    setPackageType(type);
+    if (type === "couple") {
+      setTourists(2);
+    }
+  };
 
   const getPerPersonCost = () => {
     let cost = BASE_PRICE_SLEEPER;
     if (acTrain) cost += AC_TRAIN_UPGRADE_COST;
-    if (acRoom) cost += AC_ROOM_UPGRADE_COST;
     return cost;
   };
 
   const getOriginalPerPersonCost = () => {
     let cost = ORIGINAL_PRICE;
     if (acTrain) cost += AC_TRAIN_UPGRADE_COST;
-    if (acRoom) cost += AC_ROOM_UPGRADE_COST;
     return cost;
   };
 
@@ -30,8 +35,16 @@ export default function useBookingCalculator() {
   const totalOriginal = getOriginalPerPersonCost() * tourists;
   const savings = totalOriginal - totalCost;
 
-  const incrementTourists = () => setTourists((t) => t + 1);
-  const decrementTourists = () => setTourists((t) => Math.max(1, t - 1));
+  const incrementTourists = () => {
+    if (packageType !== "couple") {
+      setTourists((t) => t + 1);
+    }
+  };
+  const decrementTourists = () => {
+    if (packageType !== "couple") {
+      setTourists((t) => Math.max(1, t - 1));
+    }
+  };
 
   // Generates custom WhatsApp message URL
   const getWhatsAppLink = (options = {}) => {
@@ -42,27 +55,25 @@ export default function useBookingCalculator() {
       : acTrain
         ? "AC Train Coach"
         : "Sleeper Class";
-    const roomText = isHeroForm
-      ? "Standard Room"
-      : acRoom
-        ? "AC Guest Room"
-        : "Non-AC Guest Room";
+    const roomText = "Standard Room (Included)";
     const priceText = isHeroForm
-      ? "₹14,499 per person"
+      ? "₹14,800 per person"
       : `Total: ₹${totalCost.toLocaleString("en-IN")}/-`;
     const dateText = date ? ` for date: ${date}` : "";
 
-    const message = `🚩 *Aarambh Travel - AYODHYA TRIP BOOKING* 🚩\n\nI want to book the Ayodhya Monsoon Tour${dateText}.\n\n*Details:*\n• Number of Tourists: ${num}\n• Train Class: ${trainText}\n• Room Accommodation: ${roomText}\n• Pricing: ${priceText}\n\nPlease confirm availability and next steps!`;
-    return `https://wa.me/916307443201?text=${encodeURIComponent(message)}`;
+    const packageText = packageType === "couple" ? "Couple Tour" : "Standard Tour";
+
+    const message = `🚩 *Aarambh Travel - AYODHYA TRIP BOOKING* 🚩\n\nI want to book the Ayodhya ${packageText}${dateText}.\n\n*Details:*\n• Package Type: ${packageType === "couple" ? "Couple Package" : "Standard Package"}\n• Number of Tourists: ${num}\n• Train Class: ${trainText}\n• Room Accommodation: ${roomText}\n• Pricing: ${priceText}\n\nPlease confirm availability and next steps!`;
+    return `https://wa.me/919082541206?text=${encodeURIComponent(message)}`;
   };
 
   return {
+    packageType,
+    handlePackageTypeChange,
     tourists,
     setTourists,
     acTrain,
     setAcTrain,
-    acRoom,
-    setAcRoom,
     perPersonCost,
     totalCost,
     totalOriginal,

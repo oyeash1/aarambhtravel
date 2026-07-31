@@ -9,6 +9,16 @@
   --accent-hover: #ea580c;
   --section-bg: #F8FAFC;
   --card-bg: #FFFFFF;
+  accent-color: var(--accent);
+}
+
+::selection {
+  background-color: var(--accent);
+  color: #FFFFFF;
+}
+
+input, select, textarea {
+  caret-color: var(--accent);
 }
 
 @theme inline {

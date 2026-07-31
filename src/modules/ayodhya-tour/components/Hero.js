@@ -44,8 +44,8 @@ const slides = [
   }
 ];
 
-export default function Hero({ getWhatsAppLink }) {
-  const [inquiryDate, setInquiryDate] = useState("");
+export default function Hero({ getWhatsAppLink, onBookClick }) {
+  const [inquiryDate, setInquiryDate] = useState("16 Sept 2026");
   const [inquiryTourists, setInquiryTourists] = useState("2");
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -88,7 +88,7 @@ export default function Hero({ getWhatsAppLink }) {
       </div>
 
       {/* Hero Interactive Content Area */}
-      <div className="relative z-20 max-w-7xl mx-auto px-6 w-full lg:h-full flex flex-col justify-center pt-28 lg:pt-20 pb-12 lg:pb-0">
+      <div className="relative z-20 max-w-7xl mx-auto px-6 w-full lg:h-full flex flex-col justify-center pt-28 lg:pt-20 pb-24 lg:pb-0">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           {/* Text & Offer Column */}
           <div
@@ -127,21 +127,21 @@ export default function Hero({ getWhatsAppLink }) {
             <div className="flex items-center gap-6 pt-2">
               <div className="text-white">
                 <p className="text-xs text-slate-400 uppercase tracking-widest">
-                  Monsoon Package Price
+                  Couple Package Price
                 </p>
                 <div className="flex items-baseline gap-2">
                   <span className="text-4xl font-extrabold text-white">
-                    ₹14,499
+                    ₹14,800
                   </span>
                   <span className="text-sm text-slate-400 line-through">
-                    ₹17,500
+                    ₹15,500
                   </span>
                 </div>
               </div>
               <div className="h-10 w-px bg-slate-800" />
               <div>
                 <span className="bg-green-500/15 border border-green-500/30 text-green-400 px-3.5 py-2 rounded-xl text-sm font-bold block">
-                  Save ₹3,001 Per Person!
+                  Save ₹700 Per Couple!
                 </span>
               </div>
             </div>
@@ -157,7 +157,7 @@ export default function Hero({ getWhatsAppLink }) {
                 onClick={() => scrollToSection("destinations")}
                 className="px-8 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/15 transition-all duration-300 cursor-pointer"
               >
-                Explore 14+ Places
+                Explore 15+ Places
               </button>
             </div>
           </div>
@@ -194,13 +194,14 @@ export default function Hero({ getWhatsAppLink }) {
                   <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                     Tentative Travel Date
                   </label>
-                  <input
-                    type="date"
+                  <select
                     value={inquiryDate}
                     onChange={(e) => setInquiryDate(e.target.value)}
                     className="w-full px-4 py-3 rounded-xl liquid-glass-input text-sm font-medium focus:outline-none"
-                    required
-                  />
+                  >
+                    <option className="bg-slate-900" value="16 Sept 2026">16 Sept 2026</option>
+                    <option className="bg-slate-900" value="22 Sept 2026">22 Sept 2026</option>
+                  </select>
                 </div>
 
                 <div>
@@ -222,15 +223,17 @@ export default function Hero({ getWhatsAppLink }) {
 
                 <GlassButton
                   variant="primary"
-                  as="a"
-                  href={getWhatsAppLink({
-                    isHeroForm: true,
-                    date: inquiryDate,
-                    count: inquiryTourists,
-                  })}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-4 mt-6"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onBookClick) {
+                      onBookClick(getWhatsAppLink({
+                        isHeroForm: true,
+                        date: inquiryDate,
+                        count: inquiryTourists,
+                      }));
+                    }
+                  }}
+                  className="w-full py-4 mt-6 cursor-pointer"
                 >
                   Check Seat Availability
                 </GlassButton>
@@ -244,7 +247,7 @@ export default function Hero({ getWhatsAppLink }) {
         </div>
 
         {/* Carousel Dots */}
-        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
+        <div className="absolute bottom-8 lg:bottom-20 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
           {slides.map((_, idx) => (
             <button
               key={idx}
