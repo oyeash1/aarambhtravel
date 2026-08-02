@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const slides = [
   {
-    image: "/assets/hero_kashi.png",
+    image: "/assets/gangaarti.jpg",
     position: "bg-[position:35%_50%] sm:bg-center",
     badge: "✨ Explore India's Holiest Cities",
     titlePart1: "Mumbai to ",
@@ -11,7 +11,7 @@ const slides = [
 
   },
   {
-    image: "/assets/hero_prayagraj.png",
+    image: "/assets/prayagraj2.jpg",
     position: "bg-[position:65%_50%] sm:bg-center",
     badge: "✨ Holy Triveni Sangam",
     titlePart1: "Mumbai to Kashi • ",
@@ -21,7 +21,7 @@ const slides = [
   },
   {
     image: "/assets/hero_ayodhya.png",
-    position: "bg-[position:center_top] sm:bg-center",
+    position: "bg-[position:center_20%] sm:bg-[position:center_20%]",
     badge: "✨ Shri Ram Janmabhoomi",
     titlePart1: "Mumbai to Kashi • Prayagraj • ",
     titleHighlight: "Ayodhya",
@@ -58,13 +58,13 @@ export default function Hero() {
       {/* Full screen Video Frame / Background fallback */}
       <div className="absolute top-0 left-0 w-full h-[110vh] lg:h-full pointer-events-none select-none overflow-hidden">
         {/* Loop gradient fallback overlay */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#0F3D91]/40 via-slate-950/75 to-slate-950" />
+        <div className="absolute inset-0 z-10 bg-black/40" />
 
         {/* Dynamic background images with smooth fade */}
         {slides.map((slide, idx) => (
           <div
             key={idx}
-            className={`absolute inset-0 w-full h-full bg-cover ${slide.position} transition-opacity duration-1000 ease-in-out scale-105 ${idx === activeIndex ? "opacity-100" : "opacity-0"
+            className={`absolute inset-0 w-full h-full bg-cover ${slide.position} transition-opacity duration-1000 ease-in-out ${idx === activeIndex ? "opacity-100" : "opacity-0"
               }`}
             style={{ backgroundImage: `url('${slide.image}')` }}
           />
@@ -72,7 +72,7 @@ export default function Hero() {
       </div>
 
       {/* Hero Interactive Content Area */}
-      <div className="relative z-20 max-w-4xl mx-auto px-6 w-full lg:h-full flex flex-col justify-center pt-28 lg:pt-24 pb-36 lg:pb-40">
+      <div className="relative z-20 max-w-4xl mx-auto px-6 w-full lg:h-full flex flex-col justify-center pt-36 lg:pt-36 pb-36 lg:pb-36">
         <div
           key={activeIndex}
           className="text-center space-y-6 animate-fade-in-up flex flex-col items-center justify-center"
@@ -81,7 +81,7 @@ export default function Hero() {
             {slides[activeIndex].badge}
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-black text-white leading-none tracking-tight">
+          <h1 className="text-4xl sm:text-6xl font-black text-white leading-none tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.7)]">
             {slides[activeIndex].titlePart1}
             {slides[activeIndex].titleHighlight && (
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500">
@@ -91,38 +91,11 @@ export default function Hero() {
             {slides[activeIndex].titlePart2}
           </h1>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 text-white text-lg">
-            <span className="font-semibold text-orange-400">
-              7 Days / 6 Nights Trip
-            </span>
-          </div>
 
-          <p className="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed mx-auto">
+
+          <p className="text-slate-100 text-base sm:text-lg max-w-xl leading-relaxed mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-semibold">
             {slides[activeIndex].description}
           </p>
-
-          {/* Dynamic Prices badges */}
-          <div className="flex items-center justify-center gap-6 pt-2">
-            <div className="text-white text-center">
-              <p className="text-xs text-slate-400 uppercase tracking-widest">
-                Couple Package Price
-              </p>
-              <div className="flex items-baseline justify-center gap-2">
-                <span className="text-4xl font-extrabold text-white">
-                  ₹14,800
-                </span>
-                <span className="text-sm text-slate-400 line-through">
-                  ₹15,500
-                </span>
-              </div>
-            </div>
-            <div className="h-10 w-px bg-slate-800" />
-            <div>
-              <span className="bg-green-500/15 border border-green-500/30 text-green-400 px-3.5 py-2 rounded-xl text-sm font-bold block">
-                Save ₹700 Per Couple!
-              </span>
-            </div>
-          </div>
 
           <div className="flex flex-wrap justify-center gap-4 pt-4">
             <button
