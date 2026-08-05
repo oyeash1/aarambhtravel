@@ -37,7 +37,7 @@ export default function Inclusions() {
         {/* Header Section */}
         <div className="text-left mb-16">
           <span className="text-primary font-bold text-xs uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">
-            JK Tours Promise
+            Arambh Travel Promise
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight mt-4 mb-4">
             All-Inclusive Premium Benefits
@@ -48,21 +48,22 @@ export default function Inclusions() {
           </p>
         </div>
 
-        {/* 2-column Grid of Icons and Titles with staggered slide-in animation */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+        {/* 2-column Grid of floating icons and names */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8 md:gap-x-8 md:gap-y-10 justify-items-center">
           {INCLUSIONS.map((inc, idx) => (
             <div
               key={inc.id}
               style={{
-                transitionDelay: `${idx * 100}ms`,
+                transitionDelay: `${idx * 80}ms`,
+                animationDelay: `${idx * 0.3}s`,
               }}
-              className={`flex items-center gap-3 p-3.5 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-500 ease-out transform ${
+              className={`flex items-center gap-2.5 transition-all duration-500 ease-out transform ${
                 isVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 -translate-x-8"
+                  ? "opacity-100 translate-x-0 animate-float"
+                  : "opacity-0 -translate-x-6"
               }`}
             >
-              <div className="text-orange-600 flex-shrink-0 w-9 h-9 rounded-lg bg-orange-50 flex items-center justify-center border border-orange-100/50">
+              <div className="text-orange-600 flex-shrink-0 w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center shadow-sm">
                 {inc.icon}
               </div>
               <span className="text-slate-900 text-xs sm:text-sm font-bold tracking-tight leading-tight">

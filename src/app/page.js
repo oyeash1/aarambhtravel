@@ -12,6 +12,7 @@ import Hero from "../modules/ayodhya-tour/components/Hero";
 import PlacesGrid from "../modules/ayodhya-tour/components/PlacesGrid";
 import Inclusions from "../modules/ayodhya-tour/components/Inclusions";
 import Itinerary from "../modules/ayodhya-tour/components/Itinerary";
+import UpcomingJourneys from "../modules/ayodhya-tour/components/UpcomingJourneys";
 import Pricing from "../modules/ayodhya-tour/components/Pricing";
 import Footer from "../modules/ayodhya-tour/components/Footer";
 
@@ -35,7 +36,7 @@ function AnimatedCounter({ target, duration = 1500, prefix = "", suffix = "", is
             const maxStart = Math.floor(target * 0.75);
             return Math.floor(Math.random() * (maxStart - minStart)) + minStart;
           })();
-          
+
           setCount(startVal);
           setStarted(startVal); // Store the calculated start value to use in the animation hook
           observer.unobserve(entry.target);
@@ -60,7 +61,7 @@ function AnimatedCounter({ target, duration = 1500, prefix = "", suffix = "", is
     const step = (timestamp) => {
       if (!startTimestamp) startTimestamp = timestamp;
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      
+
       // Easing function: easeOutQuad
       const easeProgress = progress * (2 - progress);
       const currentCount = Math.floor(easeProgress * (target - startValue) + startValue);
@@ -158,7 +159,7 @@ export default function Home() {
           </div>
           <div className="text-center">
             <h4 className="text-xl min-[390px]:text-2xl sm:text-3xl font-extrabold text-primary">
-              <AnimatedCounter target={9082541206} isPhone={true} />
+              <AnimatedCounter target={8369927351} isPhone={true} />
             </h4>
             <p className="text-xs text-slate-550 font-semibold uppercase tracking-wider mt-1">
               Helpdesk Contact
@@ -175,6 +176,9 @@ export default function Home() {
 
       {/* Accordion day-by-day itinerary timeline */}
       <Itinerary />
+
+      {/* Modern Upcoming Journeys Cards */}
+      <UpcomingJourneys />
 
       {/* Pricing customizer and WhatsApp booker */}
       <Pricing
@@ -335,8 +339,8 @@ export default function Home() {
                   }}
                   disabled={!termsAccepted}
                   className={`w-full py-3 rounded-xl font-bold text-xs tracking-wide transition-all shadow-md flex items-center justify-center gap-2 ${termsAccepted
-                      ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
-                      : "bg-slate-300 text-slate-500 cursor-not-allowed"
+                    ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                    : "bg-slate-300 text-slate-500 cursor-not-allowed"
                     }`}
                 >
                   <span>Proceed to WhatsApp</span>

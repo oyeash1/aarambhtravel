@@ -129,6 +129,32 @@ body {
   transform: translateY(-6px);
 }
 
+.pricing-3d-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.32) 100%) !important;
+  backdrop-filter: blur(25px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow:
+    0 15px 35px -5px rgba(15, 61, 145, 0.12),
+    0 5px 15px -5px rgba(0, 0, 0, 0.05),
+    inset 1px 1px 0px 0px rgba(255, 255, 255, 0.95),
+    inset -1px -1px 0px 0px rgba(0, 0, 0, 0.06) !important;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+}
+
+.pricing-3d-card:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.44) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.95) !important;
+  box-shadow:
+    0 35px 70px -15px rgba(15, 61, 145, 0.28),
+    0 15px 30px -10px rgba(0, 0, 0, 0.12),
+    inset 2px 2px 0px 0px rgba(255, 255, 255, 1),
+    inset -2px -2px 0px 0px rgba(0, 0, 0, 0.15),
+    inset 0 0 20px 0 rgba(255, 255, 255, 0.5) !important;
+}
+
 .liquid-glass-input {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);

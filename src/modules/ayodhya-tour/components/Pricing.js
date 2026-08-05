@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export default function Pricing({
   packageType,
@@ -15,11 +15,60 @@ export default function Pricing({
   getWhatsAppLink,
   onBookClick,
 }) {
-  const [selectedDate, setSelectedDate] = React.useState("16 Sept 2026");
+  const [selectedDate, setSelectedDate] = useState("16 Sept 2026");
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleMouseMove = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const xc = rect.width / 2;
+    const yc = rect.height / 2;
+    const angleX = ((yc - y) / yc) * 8;
+    const angleY = ((x - xc) / xc) * 8;
+    card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-8px) scale3d(1.01, 1.01, 1.01)`;
+    card.style.boxShadow = `
+      0 35px 70px -15px rgba(15, 61, 145, 0.28),
+      0 15px 30px -10px rgba(0, 0, 0, 0.12),
+      inset 2px 2px 0px 0px rgba(255, 255, 255, 1),
+      inset -2px -2px 0px 0px rgba(0, 0, 0, 0.15),
+      inset 0 0 20px 0 rgba(255, 255, 255, 0.5)
+    `;
+  };
+
+  const handleMouseLeave = (e) => {
+    const card = e.currentTarget;
+    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale3d(1, 1, 1)`;
+    card.style.boxShadow = ``;
+    card.style.transition = "transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)";
+  };
+
   return (
     <section
+      ref={sectionRef}
       id="pricing"
       className="py-24 bg-white border-t border-slate-200/50 relative overflow-hidden"
+      style={{ perspective: "1500px" }}
     >
       {/* Colorful background blobs for glass refraction */}
       <div className="absolute top-12 right-12 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
@@ -41,7 +90,18 @@ export default function Pricing({
               directly on WhatsApp with pre-filled settings.
             </p>
 
-            <div className="p-6 rounded-2xl liquid-glass-card space-y-4">
+            <div
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              style={{
+                transitionDelay: "150ms",
+              }}
+              className={`p-6 rounded-2xl pricing-3d-card space-y-4 transition-all duration-700 ease-out transform ${
+                isVisible
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-16"
+              }`}
+            >
               <div className="flex items-center gap-3">
                 <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-[10px] font-bold">
                   ✓
@@ -71,7 +131,16 @@ export default function Pricing({
 
           {/* Right Calculator Card */}
           <div className="lg:col-span-7">
-            <div className="liquid-glass-card rounded-3xl p-5 sm:p-6 md:p-8 relative overflow-hidden">
+            <div
+              style={{
+                transitionDelay: "300ms",
+              }}
+              className={`liquid-glass-card rounded-3xl p-5 sm:p-6 md:p-8 relative overflow-hidden transition-all duration-700 ease-out transform ${
+                isVisible
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-16"
+              }`}
+            >
               <div className="absolute top-0 right-0 w-24 h-24 bg-orange-500/10 rounded-full blur-2xl pointer-events-none" />
               <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-4 pb-3 border-b border-white/40 flex items-center justify-between">
                 <span>Price Configurator</span>

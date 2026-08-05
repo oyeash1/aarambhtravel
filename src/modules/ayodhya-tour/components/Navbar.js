@@ -91,7 +91,7 @@ export default function Navbar() {
 
         {/* Call to Action Button */}
         <a
-          href="tel:9082541206"
+          href="tel:8369927351"
           className="flex items-center gap-2 px-4 py-2 rounded-full border border-accent text-accent font-semibold text-xs hover:bg-accent hover:text-white transition-all duration-300"
         >
           <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
