@@ -58,12 +58,11 @@ export default function UpcomingJourneys() {
 
         {/* Overlapping Scattered Cards Deck */}
         <div className="flex flex-row items-center justify-center max-w-5xl mx-auto min-h-[420px] overflow-visible">
-          
+
           {/* Card 1 (Left Info Card) */}
           <div
-            className={`w-[130px] sm:w-[180px] md:w-[280px] h-[230px] sm:h-[280px] md:h-[320px] rounded-3xl p-3 sm:p-6 md:p-8 liquid-glass-card border border-white/60 shadow-lg hover:shadow-xl transition-all duration-500 ease-out transform rotate-[-3deg] md:rotate-[-6deg] hover:rotate-0 hover:-translate-y-2 z-10 hover:z-30 flex flex-col justify-between -mr-14 sm:-mr-10 md:mr-0 ${
-              isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"
-            }`}
+            className={`w-[130px] sm:w-[180px] md:w-[280px] h-[230px] sm:h-[280px] md:h-[320px] rounded-3xl p-3 sm:p-6 md:p-8 liquid-glass-card border border-white/60 shadow-lg hover:shadow-xl transition-all duration-500 ease-out transform rotate-[-3deg] md:rotate-[-6deg] hover:rotate-0 hover:-translate-y-2 z-10 hover:z-30 flex flex-col justify-between -mr-14 sm:-mr-10 md:mr-0 ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"
+              }`}
           >
             <div className="space-y-2 sm:space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
@@ -82,7 +81,7 @@ export default function UpcomingJourneys() {
                 Launching Soon
               </span>
               <p className="text-[7px] sm:text-[10px] text-slate-500 font-semibold uppercase tracking-widest mt-0.5">
-                JK Tours Exclusive
+                Arambh Travel Exclusive
               </p>
             </div>
           </div>
@@ -91,9 +90,8 @@ export default function UpcomingJourneys() {
           <div className="flex flex-col items-center z-20 w-auto">
             <div
               onClick={handleSwap}
-              className={`group w-[180px] sm:w-[240px] md:w-[340px] h-[250px] sm:h-[300px] md:h-[340px] rounded-3xl overflow-hidden liquid-glass-card border-2 border-white shadow-2xl transition-all duration-500 ease-out transform scale-100 md:scale-105 rotate-[1deg] md:rotate-[-1deg] hover:scale-105 md:hover:scale-110 hover:rotate-0 cursor-pointer relative flex flex-col justify-end ${
-                isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"
-              }`}
+              className={`group w-[180px] sm:w-[240px] md:w-[340px] h-[250px] sm:h-[300px] md:h-[340px] rounded-3xl overflow-hidden liquid-glass-card border-2 border-white shadow-2xl transition-all duration-500 ease-out transform scale-100 md:scale-105 rotate-[1deg] md:rotate-[-1deg] hover:scale-105 md:hover:scale-110 hover:rotate-0 cursor-pointer relative flex flex-col justify-end ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"
+                }`}
             >
               {/* Image background */}
               <Image
@@ -115,9 +113,8 @@ export default function UpcomingJourneys() {
 
             {/* Label below the image card */}
             <div
-              className={`mt-3 sm:mt-4 flex items-center gap-1 sm:gap-1.5 text-[9px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-widest transition-all duration-500 ${
-                isTransitioning ? "opacity-0 translate-y-1" : "opacity-100 translate-y-0"
-              }`}
+              className={`mt-3 sm:mt-4 flex items-center gap-1 sm:gap-1.5 text-[9px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-widest transition-all duration-500 ${isTransitioning ? "opacity-0 translate-y-1" : "opacity-100 translate-y-0"
+                }`}
             >
               <svg className="w-3.5 h-3.5 text-orange-500 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75L12 3m0 0l3.75 3.75M12 3v18" />
@@ -128,9 +125,8 @@ export default function UpcomingJourneys() {
 
           {/* Card 3 (Right Info Card) */}
           <div
-            className={`w-[130px] sm:w-[180px] md:w-[280px] h-[230px] sm:h-[280px] md:h-[320px] rounded-3xl p-3 sm:p-6 md:p-8 liquid-glass-card border border-white/60 shadow-lg hover:shadow-xl transition-all duration-500 ease-out transform rotate-[3deg] md:rotate-[6deg] hover:rotate-0 hover:-translate-y-2 z-10 hover:z-30 flex flex-col justify-between -ml-14 sm:-ml-10 md:ml-0 ${
-              isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"
-            }`}
+            className={`w-[130px] sm:w-[180px] md:w-[280px] h-[230px] sm:h-[280px] md:h-[320px] rounded-3xl p-3 sm:p-6 md:p-8 liquid-glass-card border border-white/60 shadow-lg hover:shadow-xl transition-all duration-500 ease-out transform rotate-[3deg] md:rotate-[6deg] hover:rotate-0 hover:-translate-y-2 z-10 hover:z-30 flex flex-col justify-between -ml-14 sm:-ml-10 md:ml-0 ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"
+              }`}
           >
             <div className="space-y-1 sm:space-y-4">
               <h4 className="text-[7px] sm:text-[10px] md:text-xs font-bold text-orange-500 uppercase tracking-widest">

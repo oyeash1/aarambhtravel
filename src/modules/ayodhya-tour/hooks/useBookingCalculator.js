@@ -64,7 +64,7 @@ export default function useBookingCalculator() {
     const packageText = packageType === "couple" ? "Couple Tour" : "Standard Tour";
 
     const message = `🚩 *Arambh Travel - AYODHYA TRIP BOOKING* 🚩\n\nI want to book the Ayodhya ${packageText}${dateText}.\n\n*Details:*\n• Package Type: ${packageType === "couple" ? "Couple Package" : "Standard Package"}\n• Number of Tourists: ${num}\n• Train Class: ${trainText}\n• Room Accommodation: ${roomText}\n• Pricing: ${priceText}\n\nPlease confirm availability and next steps!`;
-    return `https://wa.me/916307443201?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/918369927351?text=${encodeURIComponent(message)}`;
   };
 
   return {

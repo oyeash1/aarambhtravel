@@ -96,11 +96,10 @@ export default function Pricing({
               style={{
                 transitionDelay: "150ms",
               }}
-              className={`p-6 rounded-2xl pricing-3d-card space-y-4 transition-all duration-700 ease-out transform ${
-                isVisible
+              className={`p-6 rounded-2xl pricing-3d-card space-y-4 transition-all duration-700 ease-out transform ${isVisible
                   ? "opacity-100 translate-x-0"
                   : "opacity-0 -translate-x-16"
-              }`}
+                }`}
             >
               <div className="flex items-center gap-3">
                 <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-[10px] font-bold">
@@ -123,7 +122,7 @@ export default function Pricing({
                   ✓
                 </div>
                 <span className="text-xs font-semibold text-slate-700">
-                  Free Cancellation up to 7 days before departure
+                  Free Cancellation up to 18 days before departure
                 </span>
               </div>
             </div>
@@ -135,11 +134,10 @@ export default function Pricing({
               style={{
                 transitionDelay: "300ms",
               }}
-              className={`liquid-glass-card rounded-3xl p-5 sm:p-6 md:p-8 relative overflow-hidden transition-all duration-700 ease-out transform ${
-                isVisible
+              className={`liquid-glass-card rounded-3xl p-5 sm:p-6 md:p-8 relative overflow-hidden transition-all duration-700 ease-out transform ${isVisible
                   ? "opacity-100 translate-x-0"
                   : "opacity-0 -translate-x-16"
-              }`}
+                }`}
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-orange-500/10 rounded-full blur-2xl pointer-events-none" />
               <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-4 pb-3 border-b border-white/40 flex items-center justify-between">
@@ -159,21 +157,19 @@ export default function Pricing({
               <div className="flex bg-white/20 backdrop-blur-md p-1 rounded-2xl border border-white/40 mb-4 sm:mb-6">
                 <button
                   onClick={() => handlePackageTypeChange("couple")}
-                  className={`flex-1 py-3 text-center text-xs font-bold rounded-xl transition-all cursor-pointer ${
-                    packageType === "couple"
+                  className={`flex-1 py-3 text-center text-xs font-bold rounded-xl transition-all cursor-pointer ${packageType === "couple"
                       ? "bg-primary text-white shadow-md"
                       : "text-slate-700 hover:bg-white/20"
-                  }`}
+                    }`}
                 >
                   Couple Package
                 </button>
                 <button
                   onClick={() => handlePackageTypeChange("normal")}
-                  className={`flex-1 py-3 text-center text-xs font-bold rounded-xl transition-all cursor-pointer ${
-                    packageType === "normal"
+                  className={`flex-1 py-3 text-center text-xs font-bold rounded-xl transition-all cursor-pointer ${packageType === "normal"
                       ? "bg-primary text-white shadow-md"
                       : "text-slate-700 hover:bg-white/20"
-                  }`}
+                    }`}
                 >
                   Standard Package
                 </button>
@@ -195,11 +191,10 @@ export default function Pricing({
                   <div className="flex items-center gap-4">
                     <button
                       onClick={packageType === "couple" ? null : decrementTourists}
-                      className={`w-10 h-10 rounded-xl border font-extrabold flex items-center justify-center transition-colors ${
-                        packageType === "couple"
+                      className={`w-10 h-10 rounded-xl border font-extrabold flex items-center justify-center transition-colors ${packageType === "couple"
                           ? "bg-white/10 border-white/10 text-slate-400 cursor-not-allowed opacity-50"
                           : "bg-white/40 hover:bg-white/70 border border-white/60 text-slate-700 cursor-pointer"
-                      }`}
+                        }`}
                       disabled={packageType === "couple"}
                     >
                       -
@@ -209,11 +204,10 @@ export default function Pricing({
                     </span>
                     <button
                       onClick={packageType === "couple" ? null : incrementTourists}
-                      className={`w-10 h-10 rounded-xl border font-extrabold flex items-center justify-center transition-colors ${
-                        packageType === "couple"
+                      className={`w-10 h-10 rounded-xl border font-extrabold flex items-center justify-center transition-colors ${packageType === "couple"
                           ? "bg-white/10 border-white/10 text-slate-400 cursor-not-allowed opacity-50"
                           : "bg-white/40 hover:bg-white/70 border border-white/60 text-slate-700 cursor-pointer"
-                      }`}
+                        }`}
                       disabled={packageType === "couple"}
                     >
                       +
@@ -236,21 +230,19 @@ export default function Pricing({
                   <div className="flex gap-2">
                     <button
                       onClick={() => setAcTrain(false)}
-                      className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
-                        !acTrain
+                      className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${!acTrain
                           ? "bg-primary border-primary text-white"
                           : "border-white/60 bg-white/30 text-slate-700 hover:bg-white/60"
-                      }`}
+                        }`}
                     >
                       Sleeper Class (Included)
                     </button>
                     <button
                       onClick={() => setAcTrain(true)}
-                      className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
-                        acTrain
+                      className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${acTrain
                           ? "bg-primary border-primary text-white"
                           : "border-white/60 bg-white/30 text-slate-700 hover:bg-white/60"
-                      }`}
+                        }`}
                     >
                       AC Upgrade (+₹3000/person)
                     </button>
