@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Arambh Travel",
-  description: "Travel With Comfort",
+  description: "We specialize in offering high-quality pilgrimage tours across India. Travel in maximum comfort, return with memories. WhatsApp: 8369927351",
 };
 
 export default function RootLayout({ children }) {
