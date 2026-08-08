@@ -13,7 +13,7 @@ export default function Inclusions() {
           observer.unobserve(entry.target); // trigger animation only once
         }
       },
-      { threshold: 0.1 } // trigger when 10% of the section is visible
+      { threshold: 0.2 } // trigger when 10% of the section is visible
     );
 
     if (sectionRef.current) {
@@ -55,13 +55,11 @@ export default function Inclusions() {
               key={inc.id}
               style={{
                 transitionDelay: `${idx * 80}ms`,
-                animationDelay: `${idx * 0.3}s`,
               }}
-              className={`flex items-center gap-2.5 transition-all duration-500 ease-out transform ${
-                isVisible
-                  ? "opacity-100 translate-x-0 animate-float"
+              className={`flex items-center gap-2.5 transition-all duration-500 ease-out transform ${isVisible
+                  ? "opacity-100 translate-x-0"
                   : "opacity-0 -translate-x-6"
-              }`}
+                }`}
             >
               <div className="text-orange-600 flex-shrink-0 w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center shadow-sm">
                 {inc.icon}

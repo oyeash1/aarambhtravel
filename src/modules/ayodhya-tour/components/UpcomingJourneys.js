@@ -1,9 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 export default function UpcomingJourneys() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const upcomingTours = [
     {
@@ -37,7 +57,7 @@ export default function UpcomingJourneys() {
   const tour = upcomingTours[activeIdx];
 
   return (
-    <section id="upcoming" className="py-24 bg-slate-50 border-t border-slate-200/50 relative overflow-hidden">
+    <section ref={sectionRef} id="upcoming" className="py-24 bg-slate-50 border-t border-slate-200/50 relative overflow-hidden">
       {/* Background glowing blobs matching the theme */}
       <div className="absolute top-12 left-12 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-12 right-12 w-96 h-96 bg-accent/10 rounded-full blur-[100px] pointer-events-none" />
@@ -57,7 +77,8 @@ export default function UpcomingJourneys() {
         </div>
 
         {/* Overlapping Scattered Cards Deck */}
-        <div className="flex flex-row items-center justify-center max-w-5xl mx-auto min-h-[420px] overflow-visible">
+        <div className={`flex flex-row items-center justify-center max-w-5xl mx-auto min-h-[420px] overflow-visible transition-all duration-1000 ease-out transform ${isVisible ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-8"
+          }`}>
 
           {/* Card 1 (Left Info Card) */}
           <div

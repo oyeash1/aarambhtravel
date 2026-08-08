@@ -280,7 +280,7 @@ export default function Home() {
 
               <div>
                 <h5 className="font-bold text-slate-800 text-[11px] mb-0.5">2. Cancellation & Refund Policy</h5>
-                <p className="text-slate-605">Cancellation and refunds can only be processed if requested at least 18 days prior to the tour departure date (18 din pahle hi kar sakte hain tour ke).</p>
+                <p className="text-slate-605">A 50% refund is issued for cancellations. If cancelled within 3 days prior to the trip date, only a 10% refund is applicable (trip date se 3 din ke andar cancel karne par sirf 10% refund milega).</p>
               </div>
 
               <div>

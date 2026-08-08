@@ -122,7 +122,7 @@ export default function Pricing({
                   ✓
                 </div>
                 <span className="text-xs font-semibold text-slate-700">
-                  Free Cancellation up to 18 days before departure
+                  50% refund on cancellation (10% within 3 days of trip)
                 </span>
               </div>
             </div>
