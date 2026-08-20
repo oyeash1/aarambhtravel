@@ -1,10 +1,14 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [currentPath, setCurrentPath] = useState("");
 
   useEffect(() => {
+    setCurrentPath(window.location.pathname);
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setIsScrolled(true);
@@ -17,6 +21,10 @@ export default function Navbar() {
   }, []);
 
   const scrollToSection = (id) => {
+    if (typeof window !== "undefined" && window.location.pathname !== "/") {
+      window.location.href = `/#${id}`;
+      return;
+    }
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
@@ -31,7 +39,7 @@ export default function Navbar() {
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2 md:gap-3 group">
+        <a href="/" className="flex items-center gap-2 md:gap-3 group">
           <div className="relative w-9 h-9 md:w-11 md:h-11 bg-white rounded-lg md:rounded-xl overflow-hidden shadow-md border border-slate-100 flex items-center justify-center p-1 group-hover:scale-105 transition-transform duration-300">
             <Image
               src="/logo.png"
@@ -59,6 +67,18 @@ export default function Navbar() {
 
         {/* Desktop Nav Items */}
         <nav className="hidden md:flex items-center gap-8 font-medium text-sm">
+          <a
+            href="/"
+            className={`hover:text-accent transition-colors duration-300 cursor-pointer font-semibold ${
+              currentPath === "/"
+                ? "text-orange-500 font-bold"
+                : isScrolled
+                ? "text-slate-600"
+                : "text-white"
+            }`}
+          >
+            Home
+          </a>
           <button
             onClick={() => scrollToSection("destinations")}
             className={`hover:text-accent transition-colors duration-300 cursor-pointer ${isScrolled ? "text-slate-600" : "text-white"
@@ -67,26 +87,24 @@ export default function Navbar() {
             Destinations
           </button>
           <button
-            onClick={() => scrollToSection("inclusions")}
-            className={`hover:text-accent transition-colors duration-300 cursor-pointer ${isScrolled ? "text-slate-600" : "text-white"
-              }`}
-          >
-            Inclusions
-          </button>
-          <button
             onClick={() => scrollToSection("itinerary")}
             className={`hover:text-accent transition-colors duration-300 cursor-pointer ${isScrolled ? "text-slate-600" : "text-white"
               }`}
           >
             Itinerary
           </button>
-          <button
-            onClick={() => scrollToSection("pricing")}
-            className={`hover:text-accent transition-colors duration-300 cursor-pointer ${isScrolled ? "text-slate-600" : "text-white"
-              }`}
+          <a
+            href="/our-journeys"
+            className={`hover:text-accent transition-colors duration-300 cursor-pointer font-semibold ${
+              currentPath === "/our-journeys"
+                ? "text-orange-500 font-bold"
+                : isScrolled
+                ? "text-slate-600"
+                : "text-white"
+            }`}
           >
-            Pricing Calculator
-          </button>
+            Our Journeys
+          </a>
         </nav>
 
         {/* Call to Action Button */}

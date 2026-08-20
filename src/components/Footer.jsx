@@ -3,6 +3,10 @@ import Image from "next/image";
 
 export default function Footer({ onTermsClick }) {
   const scrollToSection = (id) => {
+    if (typeof window !== "undefined" && window.location.pathname !== "/") {
+      window.location.href = `/#${id}`;
+      return;
+    }
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
@@ -78,7 +82,7 @@ export default function Footer({ onTermsClick }) {
             <li>
               <button
                 onClick={() => scrollToSection("destinations")}
-                className="hover:text-white transition-colors cursor-pointer text-left"
+                className="hover:text-white transition-colors cursor-pointer text-left font-semibold text-slate-350"
               >
                 Mumbai to Ayodhya Couple Special
               </button>
@@ -86,6 +90,14 @@ export default function Footer({ onTermsClick }) {
             <li>7 Days / 6 Nights Complete Pilgrimage</li>
             <li>Sleeper Coach & 3AC Upgrades Available</li>
             <li>Saryu Boat Ride & LED Show ticket included</li>
+            <li>
+              <a
+                href="/our-journeys"
+                className="hover:text-white text-orange-400 font-bold transition-colors cursor-pointer text-left block mt-1"
+              >
+                Our Completed Journeys (Ayodhya) →
+              </a>
+            </li>
           </ul>
         </div>
 

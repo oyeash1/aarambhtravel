@@ -1,96 +1,25 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 // Core UI Components
-import Modal from "../components/ui/Modal";
+import Modal from "../components/Modal";
 
-// Module Components
-import Navbar from "../modules/ayodhya-tour/components/Navbar";
-import Hero from "../modules/ayodhya-tour/components/Hero";
-import PlacesGrid from "../modules/ayodhya-tour/components/PlacesGrid";
-import Inclusions from "../modules/ayodhya-tour/components/Inclusions";
-import Itinerary from "../modules/ayodhya-tour/components/Itinerary";
-import UpcomingJourneys from "../modules/ayodhya-tour/components/UpcomingJourneys";
-import Pricing from "../modules/ayodhya-tour/components/Pricing";
-import Footer from "../modules/ayodhya-tour/components/Footer";
+// UI Components
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import PlacesGrid from "../components/PlacesGrid";
+import Inclusions from "../components/Inclusions";
+import Itinerary from "../components/Itinerary";
+import UpcomingJourneys from "../components/UpcomingJourneys";
+import Pricing from "../components/Pricing";
+import Footer from "../components/Footer";
+import AnimatedCounter from "../components/AnimatedCounter";
+import RecentJourneyPreview from "../components/RecentJourneyPreview";
 
-// Module Hooks
-import useBookingCalculator from "../modules/ayodhya-tour/hooks/useBookingCalculator";
-
-function AnimatedCounter({ target, duration = 1500, prefix = "", suffix = "", isPrice = false, isPhone = false }) {
-  const [count, setCount] = useState(target);
-  const [started, setStarted] = useState(false);
-  const elementRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          // Initialize count to the random start value when it becomes visible
-          const startVal = (() => {
-            if (isPhone) return Math.floor(target - 1500);
-            if (target <= 10) return Math.floor(Math.random() * 3) + 1;
-            const minStart = Math.floor(target * 0.4);
-            const maxStart = Math.floor(target * 0.75);
-            return Math.floor(Math.random() * (maxStart - minStart)) + minStart;
-          })();
-
-          setCount(startVal);
-          setStarted(startVal); // Store the calculated start value to use in the animation hook
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [target, isPhone]);
-
-  useEffect(() => {
-    if (started === false) return;
-
-    let startTimestamp = null;
-    const startValue = started;
-
-    const step = (timestamp) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-
-      // Easing function: easeOutQuad
-      const easeProgress = progress * (2 - progress);
-      const currentCount = Math.floor(easeProgress * (target - startValue) + startValue);
-
-      setCount(currentCount);
-
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      }
-    };
-
-    window.requestAnimationFrame(step);
-  }, [started, target, duration]);
-
-  const formatNumber = (val) => {
-    if (isPrice) {
-      return new Intl.NumberFormat("en-IN").format(val);
-    }
-    return val.toString();
-  };
-
-  return (
-    <span ref={elementRef}>
-      {prefix}
-      {formatNumber(count)}
-      {suffix}
-    </span>
-  );
-}
+// Custom Hooks
+import useBookingCalculator from "../hooks/useBookingCalculator";
 
 export default function Home() {
   const [selectedPlace, setSelectedPlace] = useState(null);
@@ -167,6 +96,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Recent Journey Preview Section */}
+      <RecentJourneyPreview />
 
       {/* Places to Visit grid (14 locations total) */}
       <PlacesGrid onSelectPlace={setSelectedPlace} />
@@ -295,7 +227,7 @@ export default function Home() {
 
               <div>
                 <h5 className="font-bold text-slate-800 text-[11px] mb-0.5">5. Personal Belongings</h5>
-                <p className="text-slate-605">Guests are solely responsible for their personal luggage and belongings. Arambh Travel holds no liability for any losses.</p>
+                <p className="text-slate-650">Guests are solely responsible for their personal luggage and belongings. Arambh Travel holds no liability for any losses.</p>
               </div>
 
               <div>
