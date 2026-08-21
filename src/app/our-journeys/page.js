@@ -24,6 +24,12 @@ export default function OurJourneys() {
 
   const galleryImages = [
     // Add your Cloudinary image URLs here (e.g. { src: "https://res.cloudinary.com/..." })
+
+    { src: "https://res.cloudinary.com/q1kxob0l/image/upload/v1787294351/trip02_vpbs59.jpg" },
+    { src: "https://res.cloudinary.com/q1kxob0l/image/upload/v1787294351/trip04_rpegjk.jpg" },
+    { src: "https://res.cloudinary.com/q1kxob0l/image/upload/v1787294048/traingrp_sveypq.jpg" },
+    { src: "https://res.cloudinary.com/q1kxob0l/image/upload/v1787294049/gategrp_xtueut.jpg" },
+
   ];
 
   const handlePrevLightbox = () => {
@@ -82,7 +88,7 @@ export default function OurJourneys() {
             Real journeys. Real people. Real memories.
           </p>
           <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Aarambh Travel brings you closer to the divine. Every journey we plan is a promise of comfort, authentic local experiences, and deep spiritual elevation. Let these memories inspire your next sacred adventure.
+            Arambh Travel brings you closer to the divine. Every journey we plan is a promise of comfort, authentic local experiences, and deep spiritual elevation. Let these memories inspire your next sacred adventure.
           </p>
 
           <button
@@ -127,7 +133,7 @@ export default function OurJourneys() {
 
               <Reveal delay={200}>
                 <p className="text-slate-650 text-sm sm:text-base leading-relaxed font-medium">
-                  In January 2026, Aarambh Travel carried a group of over 70 devout travelers from the bustling streets of Mumbai directly into the spiritual heartlands of Northern India.
+                  In August 2026, Arambh Travel carried a group of over 70 devout travelers from the bustling streets of Mumbai directly into the spiritual heartlands of Northern India.
                 </p>
 
               </Reveal>
@@ -159,49 +165,49 @@ export default function OurJourneys() {
                   {/* Collage Image 1: Main Large image */}
                   <div className="absolute top-0 left-0 w-[55%] h-[60%] rounded-2xl overflow-hidden shadow-xl border-4 border-white rotate-[-3deg] hover:rotate-0 hover:scale-105 transition-all duration-500 group cursor-zoom-in" onClick={() => setActiveLightboxIdx(0)}>
                     <Image
-                      src="/assets/ram_janmabhoomi.png"
+                      src="/assets/grpphoto.jpeg"
                       alt="Ayodhya Ram Mandir"
                       fill
                       sizes="300px"
                       className="object-cover group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-slate-950/60 backdrop-blur-md text-[8px] font-bold text-white uppercase tracking-wider">Ayodhya</div>
+
                   </div>
 
                   {/* Collage Image 2: Kashi */}
                   <div className="absolute top-[8%] right-2 w-[48%] h-[48%] rounded-2xl overflow-hidden shadow-xl border-4 border-white rotate-[4deg] hover:rotate-0 hover:scale-105 transition-all duration-500 group cursor-zoom-in" onClick={() => setActiveLightboxIdx(1)}>
                     <Image
-                      src="/assets/hero_kashi.png"
-                      alt="Kashi Vishwanath Temple"
+                      src="/assets/trip6.jpeg"
+                      alt=""
                       fill
                       sizes="300px"
                       className="object-cover group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-slate-950/60 backdrop-blur-md text-[8px] font-bold text-white uppercase tracking-wider">Banaras</div>
+
                   </div>
 
                   {/* Collage Image 3: Prayagraj Sangam */}
                   <div className="absolute bottom-2 left-8 w-[45%] h-[42%] rounded-2xl overflow-hidden shadow-xl border-4 border-white rotate-[-2deg] hover:rotate-0 hover:scale-105 transition-all duration-500 group cursor-zoom-in" onClick={() => setActiveLightboxIdx(2)}>
                     <Image
-                      src="/assets/hero_prayagraj.png"
-                      alt="Triveni Sangam Prayagraj"
+                      src="/assets/trip3.jpeg"
+                      alt=""
                       fill
                       sizes="300px"
                       className="object-cover group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-slate-950/60 backdrop-blur-md text-[8px] font-bold text-white uppercase tracking-wider">Prayagraj</div>
+
                   </div>
 
                   {/* Collage Image 4: Hanuman Garhi */}
                   <div className="absolute bottom-8 right-6 w-[42%] h-[38%] rounded-2xl overflow-hidden shadow-xl border-4 border-white rotate-[2deg] hover:rotate-0 hover:scale-105 transition-all duration-500 group cursor-zoom-in" onClick={() => setActiveLightboxIdx(3)}>
                     <Image
-                      src="/assets/hanuman_garhi.png"
+                      src="/assets/trip7.jpeg"
                       alt="Hanuman Garhi"
                       fill
                       sizes="300px"
                       className="object-cover group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-slate-950/60 backdrop-blur-md text-[8px] font-bold text-white uppercase tracking-wider">Ayodhya</div>
+
                   </div>
                 </div>
               </Reveal>
@@ -280,14 +286,14 @@ export default function OurJourneys() {
           </div>
 
           <div className="grid lg:grid-cols-12 gap-8 items-start">
-            {/* Featured Video Player */}
-            <div className="lg:col-span-8">
+            {/* Left Column: Featured Video + Bottom Two Reels */}
+            <div className="lg:col-span-8 space-y-6">
               <Reveal>
-                <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group">
+                <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group">
                   <video
                     controls
                     muted
-                    src="https://assets.mixkit.co/videos/preview/mixkit-hiking-in-the-mountains-on-a-sunny-day-41687-large.mp4"
+                    src="https://res.cloudinary.com/q1kxob0l/video/upload/v1787294127/vd4grp_yr6kp8.mp4"
                     className="w-full h-full object-cover"
                   />
                   {/* Title overlay (fades out when playing) */}
@@ -295,34 +301,38 @@ export default function OurJourneys() {
                     <span className="text-[9px] font-bold uppercase tracking-wider text-orange-400 bg-orange-400/20 border border-orange-400/30 px-2.5 py-1 rounded-full">
                       FEATURED VLOG
                     </span>
-                    <h3 className="text-xl sm:text-2xl font-black text-white mt-2 drop-shadow">Aarambh Travel Pilgrimage Highlights</h3>
-                    <p className="text-xs text-slate-300 font-medium mt-1">A cinematic overview of our sacred tour from Mumbai through Varanasi, Prayagraj, and Ayodhya.</p>
+                    <h3 className="text-xl sm:text-2xl font-black text-white mt-2 drop-shadow">Arambh Travel Pilgrimage Highlights</h3>
+                    <p className="text-xs text-slate-300 font-medium mt-1">A cinematic overview of our sacred tour from Mumbai to Ayodhya.</p>
                   </div>
                 </div>
               </Reveal>
+
+              {/* Bottom Two Reels Side-by-Side */}
+              <div className="grid grid-cols-2 gap-4">
+                <Reveal delay={200} className="col-span-1">
+                  <HoverPlayVideo
+                    src="https://res.cloudinary.com/q1kxob0l/video/upload/v1787294150/vd5_h6d6to.mp4"
+                    title="Triveni Sangam dip"
+                    subtitle="Prayagraj Holy Waters"
+                  />
+                </Reveal>
+                <Reveal delay={300} className="col-span-1">
+                  <HoverPlayVideo
+                    src="https://res.cloudinary.com/q1kxob0l/video/upload/v1787294104/vd2_rhvy9k.mp4"
+                    title="Ram Mandir Darshan"
+                    subtitle="Spiritual Peak in Ayodhya"
+                  />
+                </Reveal>
+              </div>
             </div>
 
-            {/* Vertical Video Reels */}
-            <div className="lg:col-span-4 grid grid-cols-3 lg:grid-cols-1 gap-4">
-              <Reveal delay={100}>
+            {/* Right Column: One Vertical Video */}
+            <div className="lg:col-span-4">
+              <Reveal delay={100} className="w-full">
                 <HoverPlayVideo
-                  src="https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-ocean-near-a-cliff-43026-large.mp4"
+                  src="https://res.cloudinary.com/q1kxob0l/video/upload/v1787294127/vd3_q1zd37.mp4"
                   title="Holy Ganga Chants"
                   subtitle="Evening Aarti at Varanasi"
-                />
-              </Reveal>
-              <Reveal delay={200}>
-                <HoverPlayVideo
-                  src="https://assets.mixkit.co/videos/preview/mixkit-travel-video-of-a-man-walking-in-a-canyon-41974-large.mp4"
-                  title="Triveni Sangam dip"
-                  subtitle="Prayagraj Holy Waters"
-                />
-              </Reveal>
-              <Reveal delay={300}>
-                <HoverPlayVideo
-                  src="https://assets.mixkit.co/videos/preview/mixkit-mysterious-mountain-landscape-with-fog-28688-large.mp4"
-                  title="Ram Mandir Darshan"
-                  subtitle="Spiritual Peak in Ayodhya"
                 />
               </Reveal>
             </div>
@@ -378,7 +388,7 @@ export default function OurJourneys() {
           </Reveal>
           <Reveal delay={200}>
             <p className="text-slate-200 text-base sm:text-lg max-w-xl mx-auto leading-relaxed font-medium">
-              “Ready to create your own unforgettable memories with Aarambh Travel?”
+              “Ready to create your own unforgettable memories with Arambh Travel?”
             </p>
           </Reveal>
 

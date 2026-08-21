@@ -39,7 +39,7 @@ export default function HoverPlayVideo({ src, title, subtitle }) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={togglePlay}
-      className="relative aspect-[9/16] rounded-2xl overflow-hidden group cursor-pointer shadow-lg border border-slate-200/50 bg-slate-950"
+      className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden group cursor-pointer shadow-lg border border-slate-200/50 bg-slate-950"
     >
       <video
         ref={videoRef}

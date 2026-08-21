@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 
-export default function Reveal({ children, delay = 0 }) {
+export default function Reveal({ children, delay = 0, className = "" }) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
 
@@ -26,11 +26,11 @@ export default function Reveal({ children, delay = 0 }) {
     <div
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
-      className={`transition-all duration-1000 ease-out transform ${
+      className={`w-full transition-all duration-1000 ease-out transform ${
         isVisible
           ? "opacity-100 translate-y-0 scale-100"
           : "opacity-0 translate-y-12 scale-95"
-      }`}
+      } ${className}`}
     >
       {children}
     </div>

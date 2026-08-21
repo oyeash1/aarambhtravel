@@ -10,7 +10,7 @@ export default function TestimonialCarousel() {
       rating: 5,
       avatar: "RJ",
       gradient: "from-blue-600 to-indigo-600",
-      text: "Traveling with Aarambh Travel was a blessing. At our age, we were worried about the walking and train transfers, but the organizers took care of everything. The hotel in Ayodhya was clean, and the guide made sure we had a hassle-free darshan."
+      text: "Traveling with Arambh Travel was a blessing. At our age, we were worried about the walking and train transfers, but the organizers took care of everything. The hotel in Ayodhya was clean, and the guide made sure we had a hassle-free darshan."
     },
     {
       name: "Karan Sharma",
@@ -100,9 +100,8 @@ export default function TestimonialCarousel() {
             <button
               key={i}
               onClick={() => setActiveIdx(i)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                i === activeIdx ? "bg-orange-500 w-6" : "bg-slate-350"
-              }`}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${i === activeIdx ? "bg-orange-500 w-6" : "bg-slate-350"
+                }`}
             />
           ))}
         </div>
