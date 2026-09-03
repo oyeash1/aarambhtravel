@@ -1,36 +1,40 @@
 import React, { useState, useEffect } from "react";
+import { PACKAGES } from "../constants/tourData";
 
 const slides = [
   {
+    packageId: "ayodhya-kashi-mathura",
+    image: "/assets/mathurahd.jpg",
+    position: "bg-center",
+    badge: "✨ NEW TOUR: AYODHYA • KASHI • MATHURA",
+    titlePart1: "Mumbai to ",
+    titleHighlight: "Ayodhya • Kashi • Mathura",
+    titlePart2: "",
+    description: "Spiritual Journeys. Divine Experiences. Visit Shri Ram Janmabhoomi, Kashi Vishwanath & Shri Krishna Janmabhoomi Mathura.",
+  },
+  {
+    packageId: "kashi-ayodhya",
     image: "/assets/gangaarti.jpg",
     position: "bg-[position:35%_50%] sm:bg-center",
-    badge: "✨ Explore India's Holiest Cities",
+    badge: "✨ FLAGSHIP TOUR: KASHI • PRAYAGRAJ • AYODHYA",
     titlePart1: "Mumbai to ",
-    titleHighlight: "Kashi",
-    titlePart2: " • Prayagraj • Ayodhya",
-
-  },
-  {
-    image: "/assets/prayagraj2.jpg",
-    position: "bg-[position:65%_50%] sm:bg-center",
-    badge: "✨ Holy Triveni Sangam",
-    titlePart1: "Mumbai to Kashi • ",
-    titleHighlight: "Prayagraj",
-    titlePart2: " • Ayodhya",
-
-  },
-  {
-    image: "/assets/hero_ayodhya.png",
-    position: "bg-[position:center_20%] sm:bg-[position:center_20%]",
-    badge: "✨ Shri Ram Janmabhoomi",
-    titlePart1: "Mumbai to Kashi • Prayagraj • ",
-    titleHighlight: "Ayodhya",
+    titleHighlight: "Kashi • Prayagraj • Ayodhya",
     titlePart2: "",
-
-  }
+    description: "7 Days / 6 Nights Pilgrimage covering Banaras Ghats, Triveni Sangam Prayagraj, and Ram Janmabhoomi Ayodhya.",
+  },
+  {
+    packageId: "ayodhya-kashi-mathura",
+    image: "/assets/hero_ayodhya.png",
+    position: "bg-[position:center_20%]",
+    badge: "✨ SHRI RAM & SHRI KRISHNA DARSHAN",
+    titlePart1: "Divine Yatra with ",
+    titleHighlight: "Arambh Travel",
+    titlePart2: "",
+    description: "All-inclusive tour packages with Train Tickets, Hotel Stay, Pure Veg Meals, Sightseeing & Expert Local Tour Guides.",
+  },
 ];
 
-export default function Hero() {
+export default function Hero({ setSelectedPackageId }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -38,16 +42,21 @@ export default function Hero() {
     if (isPaused) return;
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % slides.length);
-    }, 3000);
+    }, 3500);
     return () => clearInterval(interval);
   }, [activeIndex, isPaused]);
 
-  const scrollToSection = (id) => {
+  const scrollToSection = (id, pkgId) => {
+    if (pkgId && setSelectedPackageId) {
+      setSelectedPackageId(pkgId);
+    }
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const currentSlide = slides[activeIndex];
 
   return (
     <section
@@ -57,8 +66,7 @@ export default function Hero() {
     >
       {/* Full screen Video Frame / Background fallback */}
       <div className="absolute top-0 left-0 w-full h-[110vh] lg:h-full pointer-events-none select-none overflow-hidden">
-        {/* Loop gradient fallback overlay */}
-        <div className="absolute inset-0 z-10 bg-black/40" />
+        <div className="absolute inset-0 z-10 bg-black/50" />
 
         {/* Dynamic background images with smooth fade */}
         {slides.map((slide, idx) => (
@@ -77,68 +85,53 @@ export default function Hero() {
           key={activeIndex}
           className="text-center space-y-6 animate-fade-in-up flex flex-col items-center justify-center"
         >
-          <div className="inline-flex items-center gap-2 px-2 py-1.5 rounded-full bg-red-500 text-white font-black text-xs uppercase tracking-wider shadow-lg shadow-red-600/30 animate-pulse-slow">
-            {slides[activeIndex].badge}
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500 text-white font-black text-xs uppercase tracking-wider shadow-lg shadow-orange-600/30 animate-pulse-slow">
+            {currentSlide.badge}
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-black text-white leading-none tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.7)]">
-            {slides[activeIndex].titlePart1}
-            {slides[activeIndex].titleHighlight && (
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500">
-                {slides[activeIndex].titleHighlight}
+          <h1 className="text-4xl sm:text-6xl font-black text-white leading-tight tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+            {currentSlide.titlePart1}
+            {currentSlide.titleHighlight && (
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-500">
+                {currentSlide.titleHighlight}
               </span>
             )}
-            {slides[activeIndex].titlePart2}
+            {currentSlide.titlePart2}
           </h1>
 
-
-
-          <p className="text-slate-100 text-base sm:text-lg max-w-xl leading-relaxed mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-semibold">
-            {slides[activeIndex].description}
+          <p className="text-slate-100 text-base sm:text-lg max-w-2xl leading-relaxed mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] font-semibold">
+            {currentSlide.description}
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 pt-4">
             <button
-              onClick={() => scrollToSection("pricing")}
-              className="px-6 py-2.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs sm:text-sm tracking-wide transition-all duration-300 shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:-translate-y-0.5 cursor-pointer"
+              onClick={() => scrollToSection("pricing", currentSlide.packageId)}
+              className="px-7 py-3 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs sm:text-sm tracking-wide transition-all duration-300 shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:-translate-y-0.5 cursor-pointer"
             >
-              Book Tour Now
+              Book {currentSlide.packageId === "ayodhya-kashi-mathura" ? "Ayodhya-Kashi-Mathura" : "Kashi-Prayagraj-Ayodhya"}
             </button>
             <button
-              onClick={() => scrollToSection("destinations")}
-              className="px-6 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm border border-white/15 transition-all duration-300 cursor-pointer"
+              onClick={() => scrollToSection("destinations", currentSlide.packageId)}
+              className="px-7 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm border border-white/20 transition-all duration-300 cursor-pointer backdrop-blur-md"
             >
-              Explore 15+ Places
+              Explore Destinations
             </button>
           </div>
         </div>
 
         {/* Carousel Dots */}
-        <div className="absolute bottom-10 lg:bottom-28 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
+        <div className="absolute bottom-10 lg:bottom-24 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
           {slides.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setActiveIndex(idx)}
               className={`w-3 h-3 rounded-full transition-all duration-300 border-2 cursor-pointer ${idx === activeIndex
-                ? "bg-orange-500 border-orange-500 scale-125 shadow-md shadow-orange-500/50"
-                : "bg-transparent border-white/60 hover:border-white hover:bg-white/20"
+                  ? "bg-orange-500 border-orange-500 scale-125 shadow-md shadow-orange-500/50"
+                  : "bg-transparent border-white/60 hover:border-white hover:bg-white/20"
                 }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
           ))}
-        </div>
-
-        {/* Floating Arrow down */}
-        <div
-          className="absolute bottom-4 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-1 cursor-pointer opacity-70 hover:opacity-100 transition-opacity"
-          onClick={() => scrollToSection("destinations")}
-        >
-          <span className="text-[10px] font-bold text-white uppercase tracking-widest">
-            Scroll to explore
-          </span>
-          <div className="w-5 h-8 border-2 border-white/30 rounded-full flex justify-center p-1">
-            <div className="w-1 h-2 bg-orange-400 rounded-full animate-bounce" />
-          </div>
         </div>
       </div>
     </section>

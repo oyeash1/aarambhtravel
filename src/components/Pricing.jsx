@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
+import { PACKAGES } from "../constants/tourData";
 
 export default function Pricing({
+  selectedPackageId,
+  setSelectedPackageId,
+  activePackage: propActivePackage,
   packageType,
   handlePackageTypeChange,
   tourists,
@@ -15,7 +19,8 @@ export default function Pricing({
   getWhatsAppLink,
   onBookClick,
 }) {
-  const [selectedDate] = useState("22 Sept 2026");
+  const activePackage = propActivePackage || PACKAGES.find((p) => p.id === selectedPackageId) || PACKAGES[0];
+  const [selectedDate] = useState(activePackage.departureDate || "22 Sept 2026");
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
@@ -75,19 +80,77 @@ export default function Pricing({
       <div className="absolute bottom-12 left-12 w-96 h-96 bg-accent/10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
+        {/* Top Package Switcher Banner */}
+        <div className="mb-12 text-center space-y-4">
+          <span className="text-orange-500 font-bold text-xs uppercase tracking-widest bg-orange-500/10 px-3.5 py-1.5 rounded-full border border-orange-500/20">
+            Select Your Sacred Package
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-black text-primary tracking-tight">
+            Our Active Pilgrimage Packages
+          </h2>
+          <p className="text-slate-600 text-sm max-w-2xl mx-auto">
+            Choose your preferred tour package below to calculate instant prices and customize your journey.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 max-w-3xl mx-auto">
+            {PACKAGES.map((pkg) => {
+              const isSelected = activePackage.id === pkg.id;
+              return (
+                <button
+                  key={pkg.id}
+                  onClick={() => setSelectedPackageId && setSelectedPackageId(pkg.id)}
+                  className={`flex-1 w-full p-4 rounded-2xl border text-left transition-all duration-300 cursor-pointer relative overflow-hidden ${
+                    isSelected
+                      ? "bg-primary text-white border-primary shadow-xl ring-2 ring-orange-400 scale-[1.02]"
+                      : "bg-white text-slate-800 border-slate-200 hover:border-primary/40 hover:bg-slate-50"
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <span
+                      className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${
+                        isSelected
+                          ? "bg-orange-500 text-white"
+                          : "bg-orange-500/10 text-orange-600"
+                      }`}
+                    >
+                      {pkg.badge}
+                    </span>
+                    <span
+                      className={`text-xs font-bold ${
+                        isSelected ? "text-orange-300" : "text-primary"
+                      }`}
+                    >
+                      ₹{pkg.basePrice.toLocaleString("en-IN")}/person
+                    </span>
+                  </div>
+                  <h3 className="text-base font-extrabold mt-2 leading-snug">
+                    {pkg.title}
+                  </h3>
+                  <p
+                    className={`text-xs mt-1 font-medium ${
+                      isSelected ? "text-slate-200" : "text-slate-500"
+                    }`}
+                  >
+                    {pkg.duration} • {pkg.shortTitle}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           {/* Left pricing text explanation */}
           <div className="lg:col-span-5 space-y-6">
-            <span className="text-orange-500 font-bold text-xs uppercase tracking-widest bg-orange-500/10 px-3 py-1 rounded-full">
-              Interactive Estimate Builder
-            </span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 text-orange-600 font-bold text-xs">
+              <span>{activePackage.badge}</span>
+              <span>• {activePackage.duration}</span>
+            </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-primary leading-tight tracking-tight">
-              Calculate & Customize Your Tour Package
+              {activePackage.title}
             </h2>
             <p className="text-slate-650 text-sm leading-relaxed">
-              Use our dynamic price calculator to configure train seat upgrades.
-              Get a transparent total calculation instantly, then click to book
-              directly on WhatsApp with pre-filled settings.
+              {activePackage.tagline}. Select your passenger count and train class to instantly estimate your total cost and book directly on WhatsApp.
             </p>
 
             <div
@@ -96,17 +159,16 @@ export default function Pricing({
               style={{
                 transitionDelay: "150ms",
               }}
-              className={`p-6 rounded-2xl pricing-3d-card space-y-4 transition-all duration-700 ease-out transform ${isVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 -translate-x-16"
-                }`}
+              className={`p-6 rounded-2xl pricing-3d-card space-y-4 transition-all duration-700 ease-out transform ${
+                isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-16"
+              }`}
             >
               <div className="flex items-center gap-3">
                 <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-[10px] font-bold">
                   ✓
                 </div>
                 <span className="text-xs font-semibold text-slate-700">
-                  No Hidden Agency Booking Fees
+                  Route: {activePackage.route}
                 </span>
               </div>
               <div className="flex items-center gap-3">
@@ -134,10 +196,9 @@ export default function Pricing({
               style={{
                 transitionDelay: "300ms",
               }}
-              className={`liquid-glass-card rounded-3xl p-5 sm:p-6 md:p-8 relative overflow-hidden transition-all duration-700 ease-out transform ${isVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 -translate-x-16"
-                }`}
+              className={`liquid-glass-card rounded-3xl p-5 sm:p-6 md:p-8 relative overflow-hidden transition-all duration-700 ease-out transform ${
+                isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-16"
+              }`}
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-orange-500/10 rounded-full blur-2xl pointer-events-none" />
               <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-4 pb-3 border-b border-white/40 flex items-center justify-between">
@@ -157,19 +218,21 @@ export default function Pricing({
               <div className="flex bg-white/20 backdrop-blur-md p-1 rounded-2xl border border-white/40 mb-4 sm:mb-6">
                 <button
                   onClick={() => handlePackageTypeChange("couple")}
-                  className={`flex-1 py-3 text-center text-xs font-bold rounded-xl transition-all cursor-pointer ${packageType === "couple"
+                  className={`flex-1 py-3 text-center text-xs font-bold rounded-xl transition-all cursor-pointer ${
+                    packageType === "couple"
                       ? "bg-primary text-white shadow-md"
                       : "text-slate-700 hover:bg-white/20"
-                    }`}
+                  }`}
                 >
                   Couple Package
                 </button>
                 <button
                   onClick={() => handlePackageTypeChange("normal")}
-                  className={`flex-1 py-3 text-center text-xs font-bold rounded-xl transition-all cursor-pointer ${packageType === "normal"
+                  className={`flex-1 py-3 text-center text-xs font-bold rounded-xl transition-all cursor-pointer ${
+                    packageType === "normal"
                       ? "bg-primary text-white shadow-md"
                       : "text-slate-700 hover:bg-white/20"
-                    }`}
+                  }`}
                 >
                   Standard Package
                 </button>
@@ -191,10 +254,11 @@ export default function Pricing({
                   <div className="flex items-center gap-4">
                     <button
                       onClick={packageType === "couple" ? null : decrementTourists}
-                      className={`w-10 h-10 rounded-xl border font-extrabold flex items-center justify-center transition-colors ${packageType === "couple"
+                      className={`w-10 h-10 rounded-xl border font-extrabold flex items-center justify-center transition-colors ${
+                        packageType === "couple"
                           ? "bg-white/10 border-white/10 text-slate-400 cursor-not-allowed opacity-50"
                           : "bg-white/40 hover:bg-white/70 border border-white/60 text-slate-700 cursor-pointer"
-                        }`}
+                      }`}
                       disabled={packageType === "couple"}
                     >
                       -
@@ -204,10 +268,11 @@ export default function Pricing({
                     </span>
                     <button
                       onClick={packageType === "couple" ? null : incrementTourists}
-                      className={`w-10 h-10 rounded-xl border font-extrabold flex items-center justify-center transition-colors ${packageType === "couple"
+                      className={`w-10 h-10 rounded-xl border font-extrabold flex items-center justify-center transition-colors ${
+                        packageType === "couple"
                           ? "bg-white/10 border-white/10 text-slate-400 cursor-not-allowed opacity-50"
                           : "bg-white/40 hover:bg-white/70 border border-white/60 text-slate-700 cursor-pointer"
-                        }`}
+                      }`}
                       disabled={packageType === "couple"}
                     >
                       +
@@ -230,21 +295,23 @@ export default function Pricing({
                   <div className="flex gap-2">
                     <button
                       onClick={() => setAcTrain(false)}
-                      className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${!acTrain
+                      className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
+                        !acTrain
                           ? "bg-primary border-primary text-white"
                           : "border-white/60 bg-white/30 text-slate-700 hover:bg-white/60"
-                        }`}
+                      }`}
                     >
                       Sleeper Class (Included)
                     </button>
                     <button
                       onClick={() => setAcTrain(true)}
-                      className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${acTrain
+                      className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
+                        acTrain
                           ? "bg-primary border-primary text-white"
                           : "border-white/60 bg-white/30 text-slate-700 hover:bg-white/60"
-                        }`}
+                      }`}
                     >
-                      AC Upgrade (+₹3000/person)
+                      AC Upgrade (+₹{activePackage.acUpgradeCost}/person)
                     </button>
                   </div>
                 </div>
@@ -263,10 +330,10 @@ export default function Pricing({
                   </div>
                   <div className="flex flex-col items-start sm:items-end gap-1.5">
                     <div className="px-4 py-2.5 rounded-xl text-xs font-bold bg-white/40 backdrop-blur-sm border border-white/60 text-slate-850">
-                      22 Sept 2026
+                      {selectedDate}
                     </div>
                     <span className="text-[10px] text-slate-500 font-semibold tracking-wide text-left sm:text-right">
-                      *Dates can be adjusted if you need
+                      *Dates can be adjusted on request
                     </span>
                   </div>
                 </div>

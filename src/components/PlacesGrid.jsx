@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { PLACES } from "../constants/tourData";
+import { PACKAGES } from "../constants/tourData";
 
-export default function PlacesGrid({ onSelectPlace }) {
+export default function PlacesGrid({ selectedPackageId, setSelectedPackageId, activePackage: propActivePackage, onSelectPlace }) {
+  const activePackage = propActivePackage || PACKAGES.find((p) => p.id === selectedPackageId) || PACKAGES[0];
   const [searchQuery, setSearchQuery] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [isAdditionalVisible, setIsAdditionalVisible] = useState(false);
@@ -74,7 +75,9 @@ export default function PlacesGrid({ onSelectPlace }) {
     return ((id * 7) % 6) * 100;
   };
 
-  const filteredPlaces = PLACES.filter(
+  const currentPlaces = activePackage.places || [];
+
+  const filteredPlaces = currentPlaces.filter(
     (place) =>
       place.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       place.desc.toLowerCase().includes(searchQuery.toLowerCase())
@@ -87,24 +90,43 @@ export default function PlacesGrid({ onSelectPlace }) {
       <div className="absolute bottom-24 right-12 w-96 h-96 bg-accent/10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="text-orange-500 font-bold text-xs uppercase tracking-widest bg-orange-500/10 px-3 py-1 rounded-full">
             Divine Itinerary Locations
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight mt-4 mb-6">
-            Places You Will Visit In Kashi • Prayagraj • Ayodhya
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight mt-4 mb-4">
+            Places You Will Visit In {activePackage.shortTitle}
           </h2>
           <p className="text-slate-600 text-sm leading-relaxed">
-            Explore 15 legendary sacred destinations across Kashi, Prayagraj, and Ayodhya.
-            Hover over each card to view details or use the search bar to locate specific points.
+            Explore legendary sacred destinations included in the <span className="font-bold text-slate-800">{activePackage.title}</span> tour.
           </p>
+
+          {/* Package Selector Pills */}
+          <div className="flex flex-wrap justify-center gap-2 mt-6">
+            {PACKAGES.map((pkg) => {
+              const isSelected = activePackage.id === pkg.id;
+              return (
+                <button
+                  key={pkg.id}
+                  onClick={() => setSelectedPackageId && setSelectedPackageId(pkg.id)}
+                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
+                    isSelected
+                      ? "bg-primary text-white border-primary shadow-md"
+                      : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
+                  }`}
+                >
+                  {pkg.shortTitle}
+                </button>
+              );
+            })}
+          </div>
 
           {/* Search input */}
           <div className="mt-8 max-w-md mx-auto">
             <div className="relative">
               <input
                 type="text"
-                placeholder="Search locations (e.g. Ram Mandir, Ghats...)"
+                placeholder="Search locations (e.g. Ram Mandir, Kashi, Mathura...)"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full px-5 py-3.5 rounded-full liquid-glass-input-light text-sm pr-12"
@@ -150,7 +172,7 @@ export default function PlacesGrid({ onSelectPlace }) {
               >
                 {/* Photo content */}
                 <Image
-                  src={place.image}
+                  src={place.image || "/assets/hero_ayodhya.png"}
                   alt={place.name}
                   fill
                   sizes="(max-width: 768px) 50vw, 33vw"

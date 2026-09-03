@@ -27,7 +27,7 @@ export default function Home() {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [whatsAppLink, setWhatsAppLink] = useState("");
   const [termsMode, setTermsMode] = useState("book"); // "book" or "view"
-  const calculator = useBookingCalculator();
+  const calculator = useBookingCalculator("kashi-ayodhya");
 
   const handleScrollToSection = (id) => {
     const el = document.getElementById(id);
@@ -57,22 +57,22 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Banner with video overlay and fast inquiry panel */}
-      <Hero />
+      <Hero setSelectedPackageId={calculator.setSelectedPackageId} />
 
       {/* Quick Statistics Banner */}
       <section className="bg-slate-50 border-y border-slate-200/50 py-10">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="text-center">
             <h4 className="text-xl min-[390px]:text-2xl sm:text-3xl font-extrabold text-primary">
-              <AnimatedCounter target={7} suffix=" Days" />
+              <AnimatedCounter target={2} suffix=" Active" />
             </h4>
             <p className="text-xs text-slate-550 font-semibold uppercase tracking-wider mt-1">
-              6 Nights Packages
+              Tour Packages
             </p>
           </div>
           <div className="text-center">
             <h4 className="text-xl min-[390px]:text-2xl sm:text-3xl font-extrabold text-primary">
-              <AnimatedCounter target={15} suffix="+" />
+              <AnimatedCounter target={25} suffix="+" />
             </h4>
             <p className="text-xs text-slate-550 font-semibold uppercase tracking-wider mt-1">
               Sacred Sites Visited
@@ -80,10 +80,10 @@ export default function Home() {
           </div>
           <div className="text-center">
             <h4 className="text-xl min-[390px]:text-2xl sm:text-3xl font-extrabold text-primary">
-              <AnimatedCounter target={14800} prefix="₹" isPrice={true} />
+              <AnimatedCounter target={calculator.activePackage.basePrice} prefix="₹" isPrice={true} />
             </h4>
             <p className="text-xs text-slate-550 font-semibold uppercase tracking-wider mt-1">
-              Starting Price
+              Starting Price ({calculator.activePackage.shortTitle})
             </p>
           </div>
           <div className="text-center">
@@ -100,20 +100,32 @@ export default function Home() {
       {/* Recent Journey Preview Section */}
       <RecentJourneyPreview />
 
-      {/* Places to Visit grid (14 locations total) */}
-      <PlacesGrid onSelectPlace={setSelectedPlace} />
+      {/* Places to Visit grid */}
+      <PlacesGrid
+        selectedPackageId={calculator.selectedPackageId}
+        setSelectedPackageId={calculator.setSelectedPackageId}
+        activePackage={calculator.activePackage}
+        onSelectPlace={setSelectedPlace}
+      />
 
       {/* Inclusions grid benefits (6 core cards) */}
       <Inclusions />
 
       {/* Accordion day-by-day itinerary timeline */}
-      <Itinerary />
+      <Itinerary
+        selectedPackageId={calculator.selectedPackageId}
+        setSelectedPackageId={calculator.setSelectedPackageId}
+        activePackage={calculator.activePackage}
+      />
 
       {/* Modern Upcoming Journeys Cards */}
       <UpcomingJourneys />
 
       {/* Pricing customizer and WhatsApp booker */}
       <Pricing
+        selectedPackageId={calculator.selectedPackageId}
+        setSelectedPackageId={calculator.setSelectedPackageId}
+        activePackage={calculator.activePackage}
         packageType={calculator.packageType}
         handlePackageTypeChange={calculator.handlePackageTypeChange}
         tourists={calculator.tourists}
@@ -136,7 +148,7 @@ export default function Home() {
       <Modal isOpen={!!selectedPlace} onClose={() => setSelectedPlace(null)}>
         {selectedPlace && (
           <div className="flex flex-col">
-            {selectedPlace.featured ? (
+            {selectedPlace.image ? (
               <div className="relative h-64 w-full">
                 <Image
                   src={selectedPlace.image}

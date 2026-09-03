@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { ITINERARY } from "../constants/tourData";
+import { PACKAGES } from "../constants/tourData";
 
 const getDayIconDetails = (dayNum) => {
-  switch (dayNum) {
+  switch (dayNum % 7) {
     case 1:
       return {
         bgClass: "bg-blue-500/10 border-blue-500/20 text-blue-500",
@@ -68,7 +68,8 @@ const getDayIconDetails = (dayNum) => {
           </svg>
         ),
       };
-    case 7:
+    case 0:
+    default:
       return {
         bgClass: "bg-sky-500/10 border-sky-500/20 text-sky-500",
         icon: (
@@ -77,13 +78,12 @@ const getDayIconDetails = (dayNum) => {
           </svg>
         ),
       };
-    default:
-      return { bgClass: "", icon: null };
   }
 };
 
-export default function Itinerary() {
-  const [activeDay, setActiveDay] = useState(1); // Default to Day 1 expanded
+export default function Itinerary({ selectedPackageId, setSelectedPackageId, activePackage: propActivePackage }) {
+  const activePackage = propActivePackage || PACKAGES.find((p) => p.id === selectedPackageId) || PACKAGES[0];
+  const [activeDay, setActiveDay] = useState(1);
 
   const handleToggle = (dayNum) => {
     setActiveDay(activeDay === dayNum ? 0 : dayNum);
@@ -96,26 +96,49 @@ export default function Itinerary() {
       <div className="absolute bottom-24 right-24 w-96 h-96 bg-accent/10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <span className="text-orange-500 font-bold text-xs uppercase tracking-widest bg-orange-500/10 px-3 py-1 rounded-full">
+        <div className="text-center mb-12">
+          <span className="text-orange-500 font-bold text-xs uppercase tracking-widest bg-orange-500/10 px-3.5 py-1.5 rounded-full">
             Day-by-Day Journey Planner
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight mt-4 mb-4">
-            Detailed 7 Days / 6 Nights Itinerary
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight mt-4 mb-3">
+            {activePackage.title} - Detailed Itinerary
           </h2>
-          <p className="text-slate-505 text-sm">
-            Click on each day to review the comprehensive travel route details.
+          <p className="text-slate-600 text-sm max-w-xl mx-auto">
+            {activePackage.duration} Route: <span className="font-semibold text-slate-800">{activePackage.route}</span>
           </p>
+
+          {/* Package Switcher Tabs */}
+          <div className="flex flex-wrap justify-center gap-2 mt-6">
+            {PACKAGES.map((pkg) => {
+              const isSelected = activePackage.id === pkg.id;
+              return (
+                <button
+                  key={pkg.id}
+                  onClick={() => {
+                    setSelectedPackageId && setSelectedPackageId(pkg.id);
+                    setActiveDay(1);
+                  }}
+                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
+                    isSelected
+                      ? "bg-primary text-white border-primary shadow-md"
+                      : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
+                  }`}
+                >
+                  {pkg.shortTitle} ({pkg.duration})
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Timeline container */}
         <div className="relative space-y-0">
-          {ITINERARY.map((dayItem, idx) => {
+          {activePackage.itinerary.map((dayItem, idx) => {
             const dayNum = dayItem.day;
             const isExpanded = activeDay === dayNum;
             const isHighlighted = activeDay > 0 && dayNum <= activeDay;
             const isActive = activeDay === dayNum;
-            const isLast = idx === ITINERARY.length - 1;
+            const isLast = idx === activePackage.itinerary.length - 1;
             const isLineOrange = activeDay > dayNum;
             const iconDetails = getDayIconDetails(dayNum);
 
@@ -172,7 +195,7 @@ export default function Itinerary() {
                             {dayItem.title}
                           </h4>
                           <p className="text-[9px] sm:text-[10px] text-slate-550 font-semibold uppercase tracking-wider mt-0.5">
-                            Mumbai to Ayodhya Route
+                            {activePackage.shortTitle}
                           </p>
                         </div>
                       </div>

@@ -1,15 +1,17 @@
 import { useState } from "react";
-import {
-  BASE_PRICE_SLEEPER,
-  ORIGINAL_PRICE,
-  AC_TRAIN_UPGRADE_COST,
-  AC_ROOM_UPGRADE_COST,
-} from "../constants/tourData";
+import { PACKAGES } from "../constants/tourData";
 
-export default function useBookingCalculator() {
-  const [packageType, setPackageType] = useState("couple");
+export default function useBookingCalculator(initialPackageId = "kashi-ayodhya") {
+  const [selectedPackageId, setSelectedPackageId] = useState(initialPackageId);
+  const [packageType, setPackageType] = useState("couple"); // "couple" or "normal"
   const [tourists, setTourists] = useState(2);
   const [acTrain, setAcTrain] = useState(false);
+
+  const activePackage = PACKAGES.find((p) => p.id === selectedPackageId) || PACKAGES[0];
+
+  const handlePackageSelection = (pkgId) => {
+    setSelectedPackageId(pkgId);
+  };
 
   const handlePackageTypeChange = (type) => {
     setPackageType(type);
@@ -19,14 +21,14 @@ export default function useBookingCalculator() {
   };
 
   const getPerPersonCost = () => {
-    let cost = packageType === "couple" ? BASE_PRICE_SLEEPER : ORIGINAL_PRICE;
-    if (acTrain) cost += AC_TRAIN_UPGRADE_COST;
+    let cost = packageType === "couple" ? activePackage.basePrice : activePackage.originalPrice;
+    if (acTrain) cost += activePackage.acUpgradeCost;
     return cost;
   };
 
   const getOriginalPerPersonCost = () => {
-    let cost = ORIGINAL_PRICE;
-    if (acTrain) cost += AC_TRAIN_UPGRADE_COST;
+    let cost = activePackage.originalPrice;
+    if (acTrain) cost += activePackage.acUpgradeCost;
     return cost;
   };
 
@@ -57,17 +59,21 @@ export default function useBookingCalculator() {
         : "Sleeper Class";
     const roomText = "Standard Room (Included)";
     const priceText = isHeroForm
-      ? "₹14,800 per person"
+      ? `₹${activePackage.basePrice.toLocaleString("en-IN")} per person`
       : `Total: ₹${totalCost.toLocaleString("en-IN")}/-`;
-    const dateText = date ? ` for date: ${date}` : "";
+    const tourDate = date || activePackage.departureDate;
+    const dateText = tourDate ? ` for date: ${tourDate}` : "";
 
-    const packageText = packageType === "couple" ? "Couple Tour" : "Standard Tour";
+    const packageTypeLabel = packageType === "couple" ? "Couple Package" : "Standard Package";
 
-    const message = `🚩 *Arambh Travel - AYODHYA TRIP BOOKING* 🚩\n\nI want to book the Ayodhya ${packageText}${dateText}.\n\n*Details:*\n• Package Type: ${packageType === "couple" ? "Couple Package" : "Standard Package"}\n• Number of Tourists: ${num}\n• Train Class: ${trainText}\n• Room Accommodation: ${roomText}\n• Pricing: ${priceText}\n\nPlease confirm availability and next steps!`;
+    const message = `🚩 *Arambh Travel - ${activePackage.whatsappMessageTitle}* 🚩\n\nI want to book the *${activePackage.title}* (${packageTypeLabel})${dateText}.\n\n*Tour Route:* ${activePackage.route}\n*Details:*\n• Package Type: ${packageTypeLabel}\n• Number of Tourists: ${num}\n• Train Class: ${trainText}\n• Room Accommodation: ${roomText}\n• Pricing: ${priceText}\n\nPlease confirm availability and next steps!`;
     return `https://wa.me/918369927351?text=${encodeURIComponent(message)}`;
   };
 
   return {
+    selectedPackageId,
+    setSelectedPackageId: handlePackageSelection,
+    activePackage,
     packageType,
     handlePackageTypeChange,
     tourists,
