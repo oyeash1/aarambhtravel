@@ -58,13 +58,13 @@ export default function TestimonialCarousel() {
   const active = testimonials[activeIdx];
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto p-8 sm:p-12 rounded-3xl liquid-glass-card border border-white/60 shadow-xl overflow-hidden min-h-[300px] flex flex-col justify-between">
+    <div className="relative w-full max-w-4xl mx-auto p-8 sm:p-12 rounded-3xl bg-white border border-[#EADBCE] shadow-lg overflow-hidden min-h-[300px] flex flex-col justify-between">
       {/* Background glow */}
-      <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-48 h-48 bg-[#9B1124]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#E11D48]/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Quote Mark */}
-      <span className="absolute top-4 left-6 text-8xl font-serif text-slate-200/40 leading-none select-none">“</span>
+      <span className="absolute top-4 left-6 text-8xl font-serif text-[#9B1124]/10 leading-none select-none">“</span>
 
       <div className="relative z-10 space-y-6">
         {/* Star Rating */}
@@ -82,7 +82,7 @@ export default function TestimonialCarousel() {
         </p>
 
         {/* User Info */}
-        <div className="flex items-center gap-4 pt-4 border-t border-slate-200/50">
+        <div className="flex items-center gap-4 pt-4 border-t border-[#EADBCE]">
           <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${active.gradient} flex items-center justify-center text-white text-base font-extrabold shadow-md`}>
             {active.avatar}
           </div>
@@ -93,34 +93,34 @@ export default function TestimonialCarousel() {
         </div>
       </div>
 
-      <div className="flex flex-row items-center justify-between mt-8 border-t border-slate-100 pt-4">
+      <div className="flex flex-row items-center justify-between mt-8 border-t border-[#EADBCE] pt-4">
         {/* Indicator dots */}
         <div className="flex justify-center gap-2">
           {testimonials.map((_, i) => (
             <button
               key={i}
               onClick={() => setActiveIdx(i)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${i === activeIdx ? "bg-orange-500 w-6" : "bg-slate-350"
+              className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${i === activeIdx ? "bg-[#E11D48] w-5" : "bg-slate-300"
                 }`}
             />
           ))}
         </div>
 
         {/* Navigation buttons */}
-        <div className="flex items-center gap-3 relative z-10">
+        <div className="flex items-center gap-2.5 relative z-10">
           <button
             onClick={handlePrev}
-            className="w-10 h-10 rounded-full border border-slate-200 hover:border-orange-500 bg-white text-slate-600 hover:text-orange-500 flex items-center justify-center transition-all cursor-pointer"
+            className="w-8 h-8 rounded-full border border-[#EADBCE] hover:border-[#E11D48] bg-white text-slate-600 hover:text-[#E11D48] flex items-center justify-center transition-all cursor-pointer shadow-xs"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           <button
             onClick={handleNext}
-            className="w-10 h-10 rounded-full border border-slate-200 hover:border-orange-500 bg-white text-slate-600 hover:text-orange-500 flex items-center justify-center transition-all cursor-pointer"
+            className="w-8 h-8 rounded-full border border-[#EADBCE] hover:border-[#E11D48] bg-white text-slate-600 hover:text-[#E11D48] flex items-center justify-center transition-all cursor-pointer shadow-xs"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </button>

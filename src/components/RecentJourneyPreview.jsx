@@ -26,16 +26,16 @@ export default function RecentJourneyPreview() {
   ];
 
   return (
-    <section className="py-20 bg-white relative overflow-hidden border-b border-slate-200/50">
+    <section className="py-20 bg-[#FCF9F5] relative overflow-hidden border-b border-[#EADBCE]">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <span className="text-orange-500 font-bold text-xs uppercase tracking-widest bg-orange-500/10 px-3.5 py-1.5 rounded-full">
+          <span className="text-[#E11D48] font-bold text-xs uppercase tracking-widest bg-[#E11D48]/10 px-3.5 py-1.5 rounded-full border border-[#E11D48]/20">
             Latest Completed Tour
           </span>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-primary tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-[#9B1124] tracking-tight">
             70+ Travelers. One Unforgettable Journey.
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+          <p className="text-slate-650 text-sm sm:text-base leading-relaxed font-medium">
             Our recent Ayodhya journey brought together 70+ travelers from Mumbai. Here's a glimpse of the memories we created together.
           </p>
         </div>
@@ -44,7 +44,7 @@ export default function RecentJourneyPreview() {
           {previewImages.map((img, i) => (
             <div
               key={i}
-              className={`relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-slate-100 group transition-all duration-500 hover:-translate-y-1 bg-slate-50 ${img.span}`}
+              className={`relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-[#EADBCE] group transition-all duration-500 hover:-translate-y-1 bg-white ${img.span}`}
             >
               <Image
                 src={getImgSrc(img.path)}
@@ -58,10 +58,10 @@ export default function RecentJourneyPreview() {
         </div>
 
         {/* Explore Button */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-10">
           <a
             href="/our-journeys"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-extrabold text-xs tracking-wider uppercase transition-all shadow-md shadow-orange-500/20 hover:shadow-orange-500/30 active:scale-95 cursor-pointer hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-xs tracking-wider uppercase transition-all shadow-sm hover:shadow-md active:scale-95 cursor-pointer hover:-translate-y-0.5"
           >
             <span>Explore Our Journey</span>
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">

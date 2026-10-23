@@ -48,9 +48,9 @@ export default function OurJourneys() {
   };
 
   return (
-    <div className="relative min-h-screen bg-white text-slate-800 selection:bg-orange-500 selection:text-white">
+    <div className="relative min-h-screen bg-[#FCF9F5] text-slate-800 selection:bg-[#E11D48] selection:text-white">
       {/* Background Noise Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#0F3D91_0.8px,transparent_0.8px)] [background-size:24px_24px] opacity-[0.03] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[radial-gradient(#9B1124_0.8px,transparent_0.8px)] [background-size:24px_24px] opacity-[0.03] pointer-events-none z-0" />
 
       {/* Navigation */}
       <Navbar />
@@ -78,22 +78,22 @@ export default function OurJourneys() {
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-transparent to-slate-950/90 z-10" />
 
         <div className="max-w-4xl mx-auto px-6 text-center relative z-20 text-white mt-12 space-y-6">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-orange-500/20 text-orange-400 font-extrabold text-xs uppercase tracking-widest border border-orange-500/30 animate-pulse">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#E11D48]/20 text-rose-300 font-extrabold text-xs uppercase tracking-widest border border-[#E11D48]/30">
             Our Stories
           </span>
           <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight leading-tight uppercase select-none">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-500">Journeys</span>
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-[#E11D48]">Journeys</span>
           </h1>
           <p className="text-lg sm:text-xl font-bold tracking-widest text-slate-200">
             Real journeys. Real people. Real memories.
           </p>
           <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Arambh Travel brings you closer to the divine. Every journey we plan is a promise of comfort, authentic local experiences, and deep spiritual elevation. Let these memories inspire your next sacred adventure.
+            Arambh Travel brings you closer to unforgettable destinations. Every journey we plan is a promise of comfort, authentic local experiences, and lifelong memories.
           </p>
 
           <button
             onClick={handleScrollToContent}
-            className="mt-8 px-8 py-3.5 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-extrabold text-xs tracking-wider uppercase transition-all shadow-lg hover:shadow-orange-500/20 active:scale-95 cursor-pointer"
+            className="mt-6 px-5 py-2.5 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-xs tracking-wider uppercase transition-all shadow-md active:scale-95 cursor-pointer"
           >
             Explore Completed Tours
           </button>
@@ -106,13 +106,13 @@ export default function OurJourneys() {
         >
           <span className="text-[10px] font-bold uppercase tracking-widest">Scroll Down</span>
           <div className="w-6 h-10 rounded-full border-2 border-white/30 flex justify-center p-1.5">
-            <div className="w-1.5 h-3 bg-orange-500 rounded-full animate-bounce" />
+            <div className="w-1.5 h-3 bg-[#E11D48] rounded-full animate-bounce" />
           </div>
         </div>
       </section>
 
       {/* 2. FEATURED JOURNEY SECTION (AYODHYA) */}
-      <section id="featured-journey" className="py-24 relative overflow-hidden bg-slate-50 border-b border-slate-200/50">
+      <section id="featured-journey" className="py-24 relative overflow-hidden bg-[#F5EFEB] border-b border-[#EADBCE]">
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
@@ -126,7 +126,7 @@ export default function OurJourneys() {
               </Reveal>
 
               <Reveal delay={100}>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary tracking-tight">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#9B1124] tracking-tight">
                   Mumbai → Ayodhya Pilgrimage
                 </h2>
               </Reveal>
@@ -140,15 +140,15 @@ export default function OurJourneys() {
 
               {/* Stats Block */}
               <Reveal delay={300}>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-slate-200/60">
-                  <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
-                    <h4 className="text-2xl font-black text-primary">70+</h4>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-[#EADBCE]">
+                  <div className="p-4 bg-white rounded-2xl shadow-sm border border-[#EADBCE]">
+                    <h4 className="text-2xl font-black text-[#9B1124]">70+</h4>
                     <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1">Devout Travelers</p>
                   </div>
 
 
-                  <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
-                    <h4 className="text-2xl font-black text-orange-500">100%</h4>
+                  <div className="p-4 bg-white rounded-2xl shadow-sm border border-[#EADBCE]">
+                    <h4 className="text-2xl font-black text-[#E11D48]">100%</h4>
                     <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1">Happy Souls</p>
                   </div>
                 </div>
@@ -217,22 +217,22 @@ export default function OurJourneys() {
       </section>
 
       {/* 3. JOURNEY MOMENTS (CINEMATIC PHOTO MASONRY) */}
-      <section className="py-24 relative overflow-hidden bg-white">
+      <section className="py-24 relative overflow-hidden bg-[#FCF9F5] border-b border-[#EADBCE]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <Reveal>
-              <span className="text-orange-500 font-bold text-xs uppercase tracking-widest bg-orange-500/10 px-3.5 py-1.5 rounded-full">
-                Capturing Devotion
+              <span className="text-[#E11D48] font-bold text-xs uppercase tracking-widest bg-[#E11D48]/10 px-3.5 py-1.5 rounded-full border border-[#E11D48]/20">
+                Capturing Moments
               </span>
             </Reveal>
             <Reveal delay={100}>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#9B1124] tracking-tight">
                 Our Journey Moments
               </h2>
             </Reveal>
             <Reveal delay={200}>
-              <p className="text-slate-655 text-sm sm:text-base leading-relaxed">
-                Browse through real, unedited photographs shared by our travelers during their tour of Ayodhya. Click any image to view fullscreen details.
+              <p className="text-slate-650 text-sm sm:text-base leading-relaxed font-medium">
+                Browse through real, unedited photographs shared by our travelers. Click any image to view fullscreen details.
               </p>
             </Reveal>
           </div>
@@ -243,7 +243,7 @@ export default function OurJourneys() {
               <Reveal key={idx} delay={idx * 75}>
                 <div
                   onClick={() => setActiveLightboxIdx(idx)}
-                  className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl border border-slate-200/50 cursor-pointer transition-all duration-500 hover:-translate-y-2 bg-slate-50 aspect-[4/3]"
+                  className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl border border-[#EADBCE] cursor-pointer transition-all duration-500 hover:-translate-y-2 bg-white aspect-[4/3]"
                 >
                   <Image
                     src={image.src}
@@ -264,12 +264,12 @@ export default function OurJourneys() {
       <section className="py-24 relative overflow-hidden bg-slate-950 text-white">
         {/* Background glowing blob */}
         <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-primary/20 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-[#E11D48]/10 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <Reveal>
-              <span className="text-orange-400 font-bold text-xs uppercase tracking-widest bg-orange-500/10 px-3.5 py-1.5 rounded-full border border-orange-500/20">
+              <span className="text-[#E11D48] font-bold text-xs uppercase tracking-widest bg-[#E11D48]/10 px-3.5 py-1.5 rounded-full border border-[#E11D48]/20">
                 Cinematic Reels
               </span>
             </Reveal>
@@ -298,11 +298,11 @@ export default function OurJourneys() {
                   />
                   {/* Title overlay (fades out when playing) */}
                   <div className="absolute bottom-6 left-6 right-6 pointer-events-none group-focus-within:opacity-0 group-hover:opacity-0 transition-opacity duration-300">
-                    <span className="text-[9px] font-bold uppercase tracking-wider text-orange-400 bg-orange-400/20 border border-orange-400/30 px-2.5 py-1 rounded-full">
+                    <span className="text-[9px] font-bold uppercase tracking-wider text-[#E11D48] bg-[#E11D48]/20 border border-[#E11D48]/30 px-2.5 py-1 rounded-full">
                       FEATURED VLOG
                     </span>
-                    <h3 className="text-xl sm:text-2xl font-black text-white mt-2 drop-shadow">Arambh Travel Pilgrimage Highlights</h3>
-                    <p className="text-xs text-slate-300 font-medium mt-1">A cinematic overview of our sacred tour from Mumbai to Ayodhya.</p>
+                    <h3 className="text-xl sm:text-2xl font-black text-white mt-2 drop-shadow">Arambh Travel Highlights</h3>
+                    <p className="text-xs text-slate-300 font-medium mt-1">A cinematic overview of our journeys across incredible destinations.</p>
                   </div>
                 </div>
               </Reveal>
@@ -341,24 +341,24 @@ export default function OurJourneys() {
       </section>
 
       {/* 5. TRAVELER MEMORIES (TESTIMONIAL CAROUSEL) */}
-      <section className="py-24 relative overflow-hidden bg-slate-50 border-t border-b border-slate-200/50">
+      <section className="py-24 relative overflow-hidden bg-[#F5EFEB] border-t border-b border-[#EADBCE]">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <Reveal>
-              <span className="text-orange-500 font-bold text-xs uppercase tracking-widest bg-orange-500/10 px-3.5 py-1.5 rounded-full">
+              <span className="text-[#E11D48] font-bold text-xs uppercase tracking-widest bg-[#E11D48]/10 px-3.5 py-1.5 rounded-full border border-[#E11D48]/20">
                 Traveler Voices
               </span>
             </Reveal>
             <Reveal delay={100}>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#9B1124] tracking-tight">
                 Traveler Memories
               </h2>
             </Reveal>
             <Reveal delay={200}>
-              <p className="text-slate-655 text-sm sm:text-base leading-relaxed">
-                Read honest, heartwarming feedback from families who completed the pilgrimage with us.
+              <p className="text-slate-650 text-sm sm:text-base leading-relaxed font-medium">
+                Read honest, heartwarming feedback from families and groups who traveled with us.
               </p>
             </Reveal>
           </div>
@@ -370,33 +370,33 @@ export default function OurJourneys() {
       </section>
 
       {/* 6. FINAL CTA SECTION */}
-      <section className="relative py-28 w-full bg-primary overflow-hidden text-white text-center">
+      <section className="relative py-20 w-full bg-gradient-to-r from-[#9B1124] to-[#7E0D1D] overflow-hidden text-white text-center">
         {/* Background blobs */}
-        <div className="absolute -top-12 -left-12 w-80 h-80 bg-accent/20 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute -top-12 -left-12 w-80 h-80 bg-[#E11D48]/20 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute -bottom-12 -right-12 w-80 h-80 bg-white/10 rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="max-w-3xl mx-auto px-6 relative z-10 space-y-6">
+        <div className="max-w-3xl mx-auto px-6 relative z-10 space-y-5">
           <Reveal>
-            <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-orange-400 font-extrabold text-xs uppercase tracking-widest border border-white/10">
+            <span className="inline-block px-4 py-1 rounded-full bg-white/10 text-rose-200 font-extrabold text-xs uppercase tracking-widest border border-white/10">
               Start Your Journey
             </span>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+            <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-white leading-tight">
               Your Journey Could Be Next.
             </h2>
           </Reveal>
           <Reveal delay={200}>
-            <p className="text-slate-200 text-base sm:text-lg max-w-xl mx-auto leading-relaxed font-medium">
+            <p className="text-rose-100/90 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-medium">
               “Ready to create your own unforgettable memories with Arambh Travel?”
             </p>
           </Reveal>
 
           <Reveal delay={300}>
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
-                href="/#pricing"
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-extrabold text-xs tracking-wider uppercase transition-all shadow-md shadow-orange-500/20 active:scale-95 cursor-pointer text-center"
+                href="/#all-trips"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-xs tracking-wider uppercase transition-all shadow-md active:scale-95 cursor-pointer text-center"
               >
                 Explore Tours
               </a>
@@ -404,7 +404,7 @@ export default function OurJourneys() {
                 href="https://wa.me/918369927351"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-extrabold text-xs tracking-wider uppercase transition-all active:scale-95 cursor-pointer text-center"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs tracking-wider uppercase transition-all active:scale-95 cursor-pointer text-center"
               >
                 Inquire on WhatsApp
               </a>

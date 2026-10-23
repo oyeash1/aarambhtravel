@@ -33,90 +33,113 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? "py-2 bg-white/90 backdrop-blur-lg border-b border-slate-200/50 shadow-md"
-        : "py-3 md:py-6 bg-transparent"
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "py-2 bg-[#FCF9F5]/95 backdrop-blur-lg border-b border-[#EADBCE]/80 shadow-sm"
+          : "py-3 md:py-6 bg-transparent"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between">
         <a href="/" className="flex items-center gap-2 md:gap-3 group">
-          <div className="relative w-9 h-9 md:w-11 md:h-11 bg-white rounded-lg md:rounded-xl overflow-hidden shadow-md border border-slate-100 flex items-center justify-center p-1 group-hover:scale-105 transition-transform duration-300">
+          <div className="relative w-9 h-9 md:w-10 md:h-10 bg-white rounded-lg md:rounded-xl overflow-hidden shadow-sm border border-[#EADBCE] flex items-center justify-center p-1 group-hover:scale-105 transition-transform duration-300">
             <Image
               src="/logo.png"
               alt="Arambh Travel Logo"
-              width={35}
-              height={35}
+              width={34}
+              height={34}
               className="object-contain"
             />
           </div>
           <div>
             <span
-              className={`font-extrabold text-base md:text-xl tracking-tight transition-colors duration-300 ${isScrolled ? "text-primary" : "text-white"
-                }`}
+              className={`font-extrabold text-base md:text-lg tracking-tight transition-colors duration-300 ${
+                isScrolled ? "text-[#9B1124]" : "text-white"
+              }`}
             >
               Arambh Travel
             </span>
             <p
-              className={`text-[8px] md:text-[9px] uppercase tracking-widest font-semibold transition-colors duration-300 ${isScrolled ? "text-slate-500" : "text-slate-300"
-                }`}
+              className={`text-[8px] md:text-[9px] uppercase tracking-widest font-bold transition-colors duration-300 ${
+                isScrolled ? "text-[#E11D48]" : "text-rose-300"
+              }`}
             >
-              Travel With Comfort
+              We Take You Where You Want To Go
             </p>
           </div>
         </a>
 
         {/* Desktop Nav Items */}
-        <nav className="hidden md:flex items-center gap-8 font-medium text-sm">
+        <nav className="hidden md:flex items-center gap-6 font-medium text-xs sm:text-sm">
           <a
             href="/"
-            className={`hover:text-accent transition-colors duration-300 cursor-pointer font-semibold ${
+            className={`hover:text-[#E11D48] transition-colors duration-200 cursor-pointer font-semibold ${
               currentPath === "/"
-                ? "text-orange-500 font-bold"
+                ? "text-[#E11D48] font-bold"
                 : isScrolled
-                ? "text-slate-600"
+                ? "text-slate-700"
                 : "text-white"
             }`}
           >
             Home
           </a>
           <button
-            onClick={() => scrollToSection("destinations")}
-            className={`hover:text-accent transition-colors duration-300 cursor-pointer ${isScrolled ? "text-slate-600" : "text-white"
-              }`}
+            onClick={() => scrollToSection("all-trips")}
+            className={`hover:text-[#E11D48] transition-colors duration-200 cursor-pointer font-medium ${
+              isScrolled ? "text-slate-700" : "text-white"
+            }`}
           >
-            Destinations
+            All Packages
+          </button>
+          <button
+            onClick={() => scrollToSection("destinations")}
+            className={`hover:text-[#E11D48] transition-colors duration-200 cursor-pointer font-medium ${
+              isScrolled ? "text-slate-700" : "text-white"
+            }`}
+          >
+            Highlights
           </button>
           <button
             onClick={() => scrollToSection("itinerary")}
-            className={`hover:text-accent transition-colors duration-300 cursor-pointer ${isScrolled ? "text-slate-600" : "text-white"
-              }`}
+            className={`hover:text-[#E11D48] transition-colors duration-200 cursor-pointer font-medium ${
+              isScrolled ? "text-slate-700" : "text-white"
+            }`}
           >
             Itinerary
           </button>
+          <button
+            onClick={() => scrollToSection("pricing")}
+            className={`hover:text-[#E11D48] transition-colors duration-200 cursor-pointer font-medium ${
+              isScrolled ? "text-slate-700" : "text-white"
+            }`}
+          >
+            Pricing
+          </button>
           <a
             href="/our-journeys"
-            className={`hover:text-accent transition-colors duration-300 cursor-pointer font-semibold ${
+            className={`hover:text-[#E11D48] transition-colors duration-200 cursor-pointer font-semibold ${
               currentPath === "/our-journeys"
-                ? "text-orange-500 font-bold"
+                ? "text-[#E11D48] font-bold"
                 : isScrolled
-                ? "text-slate-600"
+                ? "text-slate-700"
                 : "text-white"
             }`}
           >
-            Our Journeys
+            Stories
           </a>
         </nav>
 
-        {/* Call to Action Button */}
+        {/* Smaller, Refined WhatsApp Action Button */}
         <a
-          href="tel:8369927351"
-          className="flex items-center gap-2 px-4 py-2 rounded-full border border-accent text-accent font-semibold text-xs hover:bg-accent hover:text-white transition-all duration-300"
+          href="https://wa.me/918369927351?text=Hello%20Arambh%20Travel!%20I%20want%20to%20inquire%20about%20your%20tours."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-xs shadow-sm shadow-rose-900/20 transition-all duration-200 hover:scale-105 active:scale-95"
         >
-          <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+          <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+            <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.335 4.978L2 22l5.133-1.347a9.917 9.917 0 004.877 1.28h.005c5.505 0 9.989-4.478 9.99-9.985A9.99 9.99 0 0012.012 2zm4.957 14.22c-.274.774-1.585 1.5-2.194 1.56-.554.055-1.282.102-2.073-.153a10.02 10.02 0 01-4.086-2.58 10.3 10.3 0 01-2.222-3.8c-.463-.794-.741-1.72-.258-2.336.21-.266.463-.56.694-.836.223-.266.297-.456.444-.76.148-.304.074-.57-.037-.798-.111-.228-.99-2.39-1.357-3.274-.356-.862-.722-.746-.99-.76h-.846c-.297 0-.773.111-1.18.56-.407.447-1.554 1.517-1.554 3.702s1.59 4.294 1.815 4.598c.224.304 3.13 4.78 7.58 6.697 1.058.456 1.884.73 2.53 1 .918.28 1.75.24 2.41.143.738-.11 2.274-.93 2.59-1.83.317-.9 3.17-9.066.02-9.066z" />
           </svg>
-          <span className="hidden sm:inline">Call / WhatsApp Support</span>
-          <span className="sm:hidden">Call Now</span>
+          <span className="hidden sm:inline">WhatsApp Enquiry</span>
+          <span className="sm:hidden">Enquire</span>
         </a>
       </div>
     </header>

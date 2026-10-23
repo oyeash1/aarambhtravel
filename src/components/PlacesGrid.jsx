@@ -84,35 +84,35 @@ export default function PlacesGrid({ selectedPackageId, setSelectedPackageId, ac
   );
 
   return (
-    <section id="destinations" className="py-24 bg-slate-50 relative overflow-hidden">
-      {/* Colorful background blobs to enhance glass refraction */}
-      <div className="absolute top-12 left-12 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-24 right-12 w-96 h-96 bg-accent/10 rounded-full blur-[100px] pointer-events-none" />
+    <section id="destinations" className="py-20 bg-[#F5EFEB] relative overflow-hidden">
+      {/* Background glow blobs */}
+      <div className="absolute top-12 left-12 w-96 h-96 bg-[#9B1124]/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-24 right-12 w-96 h-96 bg-[#E11D48]/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-orange-500 font-bold text-xs uppercase tracking-widest bg-orange-500/10 px-3 py-1 rounded-full">
-            Divine Itinerary Locations
+          <span className="text-[#E11D48] font-extrabold text-[11px] uppercase tracking-widest bg-[#FFF1F3] px-3.5 py-1 rounded-full border border-[#FECDD3]">
+            Destinations & Highlights
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight mt-4 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-black text-[#9B1124] tracking-tight mt-3 mb-3">
             Places You Will Visit In {activePackage.shortTitle}
           </h2>
-          <p className="text-slate-600 text-sm leading-relaxed">
-            Explore legendary sacred destinations included in the <span className="font-bold text-slate-800">{activePackage.title}</span> tour.
+          <p className="text-[#6B5B60] text-xs sm:text-sm leading-relaxed">
+            Explore top attractions, scenic spots, and cultural heritage included in the <span className="font-bold text-[#29181B]">{activePackage.title}</span> tour.
           </p>
 
           {/* Package Selector Pills */}
-          <div className="flex flex-wrap justify-center gap-2 mt-6">
+          <div className="flex flex-wrap justify-center gap-2 mt-5">
             {PACKAGES.map((pkg) => {
               const isSelected = activePackage.id === pkg.id;
               return (
                 <button
                   key={pkg.id}
                   onClick={() => setSelectedPackageId && setSelectedPackageId(pkg.id)}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer border ${
                     isSelected
-                      ? "bg-primary text-white border-primary shadow-md"
-                      : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
+                      ? "bg-[#9B1124] text-white border-[#9B1124] shadow-sm"
+                      : "bg-white text-[#4A383D] border-[#EADBCE] hover:bg-[#FAF4ED]"
                   }`}
                 >
                   {pkg.shortTitle}
@@ -126,7 +126,7 @@ export default function PlacesGrid({ selectedPackageId, setSelectedPackageId, ac
             <div className="relative">
               <input
                 type="text"
-                placeholder="Search locations (e.g. Ram Mandir, Kashi, Mathura...)"
+                placeholder="Search locations (e.g. Puri, Baga, Tsomgo, Konark, Kashi...)"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full px-5 py-3.5 rounded-full liquid-glass-input-light text-sm pr-12"
@@ -172,7 +172,7 @@ export default function PlacesGrid({ selectedPackageId, setSelectedPackageId, ac
               >
                 {/* Photo content */}
                 <Image
-                  src={place.image || "/assets/hero_ayodhya.png"}
+                  src={place.image || activePackage.bannerImage || "/assets/odisha_hero.jpg"}
                   alt={place.name}
                   fill
                   sizes="(max-width: 768px) 50vw, 33vw"
@@ -183,7 +183,7 @@ export default function PlacesGrid({ selectedPackageId, setSelectedPackageId, ac
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
 
                 {/* Badge */}
-                <span className="absolute top-2 left-2 md:top-4 md:left-4 z-10 bg-orange-500 text-white font-bold text-[8px] md:text-[10px] tracking-wider uppercase px-1.5 py-0.5 md:px-2.5 md:py-1 rounded-full shadow-sm">
+                <span className="absolute top-2 left-2 md:top-4 md:left-4 z-10 bg-[#E11D48] text-white font-bold text-[8px] md:text-[10px] tracking-wider uppercase px-1.5 py-0.5 md:px-2.5 md:py-1 rounded-full shadow-sm">
                   Popular Site
                 </span>
 
@@ -218,9 +218,9 @@ export default function PlacesGrid({ selectedPackageId, setSelectedPackageId, ac
         </div>
 
         {/* Remaining Places - Grid of Minimalist Interactive Cards */}
-        <div className="mt-16 border-t border-slate-200 pt-16">
+        <div className="mt-16 border-t border-[#EADBCE] pt-16">
           <h3 className="text-lg font-bold text-primary mb-8 text-center md:text-left">
-            Additional Sightseeing & Sacred Landmarks Included:
+            Additional Sightseeing & Key Highlights Included:
           </h3>
 
           <div ref={additionalGridRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
@@ -252,7 +252,7 @@ export default function PlacesGrid({ selectedPackageId, setSelectedPackageId, ac
                         {place.desc}
                       </p>
                     </div>
-                    <span className="text-[8px] md:text-[10px] text-orange-500 font-bold tracking-wider uppercase inline-flex items-center gap-1 mt-2 md:mt-4 group-hover:underline">
+                    <span className="text-[8px] md:text-[10px] text-[#E11D48] font-bold tracking-wider uppercase inline-flex items-center gap-1 mt-2 md:mt-4 group-hover:underline">
                       Learn More
                       <svg
                         className="w-2 h-2 md:w-2.5 md:h-2.5"

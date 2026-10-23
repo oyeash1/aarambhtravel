@@ -90,25 +90,25 @@ export default function Itinerary({ selectedPackageId, setSelectedPackageId, act
   };
 
   return (
-    <section id="itinerary" className="py-24 bg-slate-50 relative overflow-hidden">
-      {/* Colorful background blobs for glass refraction */}
-      <div className="absolute top-24 left-24 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-24 right-24 w-96 h-96 bg-accent/10 rounded-full blur-[100px] pointer-events-none" />
+    <section id="itinerary" className="py-20 bg-[#F5EFEB] relative overflow-hidden">
+      {/* Background glow blobs */}
+      <div className="absolute top-24 left-24 w-96 h-96 bg-[#9B1124]/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-24 right-24 w-96 h-96 bg-[#E11D48]/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12">
-          <span className="text-orange-500 font-bold text-xs uppercase tracking-widest bg-orange-500/10 px-3.5 py-1.5 rounded-full">
+          <span className="text-[#E11D48] font-extrabold text-[11px] uppercase tracking-widest bg-[#FFF1F3] px-3.5 py-1 rounded-full border border-[#FECDD3]">
             Day-by-Day Journey Planner
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight mt-4 mb-3">
+          <h2 className="text-3xl sm:text-4xl font-black text-[#9B1124] tracking-tight mt-3 mb-2.5">
             {activePackage.title} - Detailed Itinerary
           </h2>
-          <p className="text-slate-600 text-sm max-w-xl mx-auto">
-            {activePackage.duration} Route: <span className="font-semibold text-slate-800">{activePackage.route}</span>
+          <p className="text-[#6B5B60] text-xs sm:text-sm max-w-xl mx-auto">
+            {activePackage.duration} Route: <span className="font-semibold text-[#29181B]">{activePackage.route}</span>
           </p>
 
           {/* Package Switcher Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mt-6">
+          <div className="flex flex-wrap justify-center gap-2 mt-5">
             {PACKAGES.map((pkg) => {
               const isSelected = activePackage.id === pkg.id;
               return (
@@ -118,10 +118,10 @@ export default function Itinerary({ selectedPackageId, setSelectedPackageId, act
                     setSelectedPackageId && setSelectedPackageId(pkg.id);
                     setActiveDay(1);
                   }}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer border ${
                     isSelected
-                      ? "bg-primary text-white border-primary shadow-md"
-                      : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
+                      ? "bg-[#9B1124] text-white border-[#9B1124] shadow-sm"
+                      : "bg-white text-[#4A383D] border-[#EADBCE] hover:bg-[#FAF4ED]"
                   }`}
                 >
                   {pkg.shortTitle} ({pkg.duration})
@@ -148,10 +148,10 @@ export default function Itinerary({ selectedPackageId, setSelectedPackageId, act
                 <div className="flex flex-col items-center flex-shrink-0 w-11 sm:w-20 relative">
                   {/* Vertical line segment */}
                   {!isLast && (
-                    <div className="absolute top-12 bottom-0 w-1 bg-slate-200 left-1/2 -translate-x-1/2 z-0">
-                      {/* Highlighted orange line overlay */}
+                    <div className="absolute top-12 bottom-0 w-1 bg-[#EADBCE] left-1/2 -translate-x-1/2 z-0">
+                      {/* Highlighted line overlay */}
                       <div
-                        className={`absolute inset-0 bg-orange-500 transition-transform duration-500 origin-top transform ${
+                        className={`absolute inset-0 bg-[#E11D48] transition-transform duration-500 origin-top transform ${
                           isLineOrange ? "scale-y-100" : "scale-y-0"
                         }`}
                       />
@@ -161,12 +161,12 @@ export default function Itinerary({ selectedPackageId, setSelectedPackageId, act
                   {/* Day Badge Circle */}
                   <button
                     onClick={() => handleToggle(dayNum)}
-                    className={`w-10 sm:w-16 h-10 sm:h-12 rounded-xl flex items-center justify-center font-bold text-[10px] sm:text-sm transition-all duration-300 cursor-pointer shadow-sm z-10 border ${
+                    className={`w-10 sm:w-16 h-10 sm:h-12 rounded-xl flex items-center justify-center font-bold text-[10px] sm:text-xs transition-all duration-300 cursor-pointer shadow-sm z-10 border ${
                       isActive
-                        ? "bg-orange-500 border-orange-400 text-white shadow-orange-500/20 scale-105"
+                        ? "bg-[#E11D48] border-[#E11D48] text-white shadow-[#E11D48]/20 scale-105"
                         : isHighlighted
-                        ? "bg-primary border-primary text-white shadow-primary/20"
-                        : "bg-white border-slate-200 text-slate-500 hover:border-primary/50"
+                        ? "bg-[#9B1124] border-[#9B1124] text-white shadow-[#9B1124]/20"
+                        : "bg-white border-[#EADBCE] text-[#6B5B60] hover:border-[#E11D48]"
                     }`}
                   >
                     <span className="hidden sm:inline">Day {dayNum}</span>
@@ -178,7 +178,7 @@ export default function Itinerary({ selectedPackageId, setSelectedPackageId, act
                 <div className="flex-1 pb-8">
                   <div
                     className={`rounded-2xl overflow-hidden transition-all duration-350 liquid-glass-card border border-white/50 ${
-                      isExpanded ? "ring-2 ring-orange-500/20 shadow-md" : ""
+                      isExpanded ? "ring-2 ring-[#E11D48]/30 shadow-md" : ""
                     }`}
                   >
                     <button

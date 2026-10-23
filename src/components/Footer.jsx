@@ -32,11 +32,10 @@ export default function Footer({ onTermsClick }) {
             </span>
           </div>
           <p className="text-xs leading-relaxed max-w-sm">
-            We specialize in offering high-quality pilgrimage tours across India.
-            Travel in maximum comfort, return with memories.
+            We take you where you want to go. From the sun-kissed beaches of Goa and coastal heritage of Odisha, to Himalayan wonderlands in Sikkim and sacred yatras across India — travel in maximum comfort.
           </p>
-          <p className="text-xs font-bold text-orange-400 uppercase tracking-widest pt-2">
-            🚩 Travel with Comfort, Return with Memories
+          <p className="text-xs font-bold text-rose-400 uppercase tracking-widest pt-2">
+            ✈️ We Take You Where You Want To Go
           </p>
           {/* Social Links */}
           <div className="flex items-center gap-3 pt-3">
@@ -44,7 +43,7 @@ export default function Footer({ onTermsClick }) {
               href="https://www.instagram.com/arambhtravel/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 hover:border-orange-500 hover:bg-orange-500 flex items-center justify-center transition-all duration-300 group"
+              className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 hover:border-[#E11D48] hover:bg-[#E11D48] flex items-center justify-center transition-all duration-300 group"
               title="Instagram"
             >
               <svg className="w-4 h-4 fill-current text-slate-400 group-hover:text-white" viewBox="0 0 24 24">
@@ -55,7 +54,7 @@ export default function Footer({ onTermsClick }) {
               href="https://www.facebook.com/arambh.travel"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 hover:border-orange-500 hover:bg-orange-500 flex items-center justify-center transition-all duration-300 group"
+              className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 hover:border-[#E11D48] hover:bg-[#E11D48] flex items-center justify-center transition-all duration-300 group"
               title="Facebook"
             >
               <svg className="w-4 h-4 fill-current text-slate-400 group-hover:text-white" viewBox="0 0 24 24">
@@ -64,7 +63,7 @@ export default function Footer({ onTermsClick }) {
             </a>
             <a
               href="mailto:arambhtravel@gmail.com"
-              className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 hover:border-orange-500 hover:bg-orange-500 flex items-center justify-center transition-all duration-300 group"
+              className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 hover:border-[#E11D48] hover:bg-[#E11D48] flex items-center justify-center transition-all duration-300 group"
               title="Email Us"
             >
               <svg className="w-4.5 h-4.5 fill-current text-slate-400 group-hover:text-white" viewBox="0 0 24 24">
@@ -76,26 +75,55 @@ export default function Footer({ onTermsClick }) {
 
         <div className="space-y-4">
           <h4 className="text-white font-bold text-sm uppercase tracking-wider">
-            Ayodhya Packages
+            Popular Tour Destinations
           </h4>
-          <ul className="text-xs space-y-2">
+          <ul className="text-xs space-y-2.5">
             <li>
               <button
-                onClick={() => scrollToSection("destinations")}
-                className="hover:text-white transition-colors cursor-pointer text-left font-semibold text-slate-350"
+                onClick={() => scrollToSection("all-trips")}
+                className="hover:text-white transition-colors cursor-pointer text-left font-semibold text-slate-300"
               >
-                Mumbai to Ayodhya Couple Special
+                🌊 Odisha • Puri • Konark • Chilika Lake (6D/5N)
               </button>
             </li>
-            <li>7 Days / 6 Nights Complete Pilgrimage</li>
-            <li>Sleeper Coach & 3AC Upgrades Available</li>
-            <li>Saryu Boat Ride & LED Show ticket included</li>
+            <li>
+              <button
+                onClick={() => scrollToSection("all-trips")}
+                className="hover:text-white transition-colors cursor-pointer text-left font-semibold text-slate-300"
+              >
+                🏖️ Goa Sun, Sand & Watersports (5D/4N)
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => scrollToSection("all-trips")}
+                className="hover:text-white transition-colors cursor-pointer text-left font-semibold text-slate-300"
+              >
+                🏔️ Sikkim • Gangtok • Tsomgo Lake (7D/6N)
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => scrollToSection("all-trips")}
+                className="hover:text-white transition-colors cursor-pointer text-left font-semibold text-slate-300"
+              >
+                🚩 Kashi • Prayagraj • Ayodhya Pilgrimage (7D/6N)
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => scrollToSection("all-trips")}
+                className="hover:text-white transition-colors cursor-pointer text-left font-semibold text-slate-300"
+              >
+                ✨ Ayodhya • Kashi • Mathura & Vrindavan (8D/7N)
+              </button>
+            </li>
             <li>
               <a
                 href="/our-journeys"
-                className="hover:text-white text-orange-400 font-bold transition-colors cursor-pointer text-left block mt-1"
+                className="hover:underline text-[#E11D48] font-bold transition-colors cursor-pointer text-left block mt-2"
               >
-                Our Completed Journeys (Ayodhya) →
+                Browse Real Traveler Stories & Photos →
               </a>
             </li>
           </ul>
@@ -103,20 +131,19 @@ export default function Footer({ onTermsClick }) {
 
         <div className="space-y-4">
           <h4 className="text-white font-bold text-sm uppercase tracking-wider">
-            Contact & Bookings
+            Custom Itineraries & Bookings
           </h4>
-          <p className="text-xs">
-            For offline booking support, customizable tour details, or group/corporate
-            reservations, speak to our lead coordinator.
+          <p className="text-xs leading-relaxed">
+            Have a custom destination, family vacation, or corporate group in mind? Speak directly with our travel planning team for custom routes and instant quotes.
           </p>
           <div className="pt-2">
             <a
-              href="https://wa.me/918369927351"
+              href="https://wa.me/918369927351?text=Hello%20Arambh%20Travel!%20I%20want%20to%20plan%20a%20custom%20trip."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-orange-500 text-white font-bold text-xs hover:bg-orange-600 transition-all shadow-md shadow-orange-500/10 cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#E11D48] text-white font-bold text-xs hover:bg-[#BE123C] transition-all shadow-sm cursor-pointer"
             >
-              WhatsApp: 8369927351
+              💬 WhatsApp: +91 8369927351
             </a>
           </div>
         </div>
@@ -124,8 +151,7 @@ export default function Footer({ onTermsClick }) {
 
       <div className="max-w-7xl mx-auto px-6 border-t border-slate-900 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center">
         <p className="text-[11px]">
-          &copy; 2026 Arambh Travel. All rights reserved. Tour itinerary, terms,
-          and transport rates subject to railway guidelines.
+          &copy; 2026 Arambh Travel. All rights reserved. "We take you where you want to go".
         </p>
         <div className="flex gap-6 text-[11px]">
           <button
@@ -140,8 +166,8 @@ export default function Footer({ onTermsClick }) {
           <a href="#" className="hover:text-white">
             Privacy Policy
           </a>
-          <a href="#" className="hover:text-white">
-            Railway Terms
+          <a href="https://wa.me/918369927351" className="hover:text-white">
+            Helpdesk
           </a>
         </div>
       </div>

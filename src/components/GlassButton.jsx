@@ -13,7 +13,7 @@ export default function GlassButton({
       ? "liquid-glass-button-primary"
       : "liquid-glass-button-secondary";
 
-  const classes = `px-6 py-3 rounded-xl font-bold text-sm tracking-wide transition-all duration-300 text-center inline-block cursor-pointer ${baseStyle} ${className}`;
+  const classes = `px-5 py-2.5 rounded-xl font-bold text-xs tracking-wide transition-all duration-300 text-center inline-block cursor-pointer ${baseStyle} ${className}`;
 
   if (as === "a" || href) {
     return (

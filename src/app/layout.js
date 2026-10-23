@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Arambh Travel",
-  description: "We specialize in offering high-quality pilgrimage tours across India. Travel in maximum comfort, return with memories. WhatsApp: 8369927351",
+  title: "Arambh Travel | We Take You Where You Want To Go",
+  description: "Explore curated and custom tour packages across India: Goa beaches, Odisha coastal heritage, Sikkim Himalayan peaks, and sacred pilgrimages in Kashi, Ayodhya & Mathura. WhatsApp: +91 8369927351",
 };
 
 export default function RootLayout({ children }) {

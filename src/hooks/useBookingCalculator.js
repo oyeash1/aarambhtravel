@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { PACKAGES } from "../constants/tourData";
 
-export default function useBookingCalculator(initialPackageId = "kashi-ayodhya") {
+export default function useBookingCalculator(initialPackageId = PACKAGES[0]?.id || "odisha-puri") {
   const [selectedPackageId, setSelectedPackageId] = useState(initialPackageId);
   const [packageType, setPackageType] = useState("couple"); // "couple" or "normal"
   const [tourists, setTourists] = useState(2);
