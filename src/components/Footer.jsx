@@ -136,14 +136,21 @@ export default function Footer({ onTermsClick }) {
           <p className="text-xs leading-relaxed">
             Have a custom destination, family vacation, or corporate group in mind? Speak directly with our travel planning team for custom routes and instant quotes.
           </p>
-          <div className="pt-2">
+          <div className="pt-2 flex flex-col items-start gap-2.5">
             <a
               href="https://wa.me/918369927351?text=Hello%20Arambh%20Travel!%20I%20want%20to%20plan%20a%20custom%20trip."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#E11D48] text-white font-bold text-xs hover:bg-[#BE123C] transition-all shadow-sm cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#E11D48] text-white font-bold text-xs hover:bg-[#BE123C] transition-all shadow-sm cursor-pointer w-fit"
             >
               💬 WhatsApp: +91 8369927351
+            </a>
+
+            <a
+              href="tel:6307443201"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#E11D48] text-white font-bold text-xs hover:bg-[#BE123C] transition-all shadow-sm cursor-pointer w-fit"
+            >
+              ☏  Call: +91 6307443201
             </a>
           </div>
         </div>
