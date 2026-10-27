@@ -218,6 +218,15 @@ body {
   background: #E11D48;
 }
 
+/* Hide scrollbar utility for sliders */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Card Entrance Animations */
 .places-card-entrance {
   opacity: 0;

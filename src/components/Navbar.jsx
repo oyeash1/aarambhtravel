@@ -170,26 +170,26 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between">
-        <a href="/" className="flex items-center gap-2 md:gap-3 group">
-          <div className="relative w-9 h-9 md:w-10 md:h-10 bg-white rounded-lg md:rounded-xl overflow-hidden shadow-sm border border-[#EADBCE] flex items-center justify-center p-1 group-hover:scale-105 transition-transform duration-300">
+        <a href="/" className="flex items-center gap-2.5 sm:gap-3 shrink-0 group">
+          <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white overflow-hidden shadow-xs border border-[#EADBCE] flex items-center justify-center p-1.5 shrink-0 aspect-square group-hover:scale-105 transition-transform duration-300">
             <Image
               src="/logo.png"
               alt="Arambh Travel Logo"
-              width={34}
-              height={34}
-              className="object-contain"
+              width={32}
+              height={32}
+              className="object-contain w-full h-full"
             />
           </div>
-          <div>
+          <div className="flex flex-col">
             <span
-              className={`font-extrabold text-base md:text-lg tracking-tight transition-colors duration-300 ${
+              className={`font-black text-sm sm:text-base md:text-lg tracking-tight whitespace-nowrap transition-colors duration-300 ${
                 isScrolled ? "text-[#9B1124]" : "text-white"
               }`}
             >
               Arambh Travel
             </span>
             <p
-              className={`text-[8px] md:text-[9px] uppercase tracking-widest font-bold transition-colors duration-300 ${
+              className={`hidden sm:block text-[8px] md:text-[9px] uppercase tracking-widest font-bold whitespace-nowrap transition-colors duration-300 ${
                 isScrolled ? "text-[#E11D48]" : "text-rose-300"
               }`}
             >
@@ -259,28 +259,28 @@ export default function Navbar() {
         </nav>
 
         {/* Action Buttons: WhatsApp Enquiry & Service Inquiry Dropdown */}
-        <div className="flex items-center gap-2 sm:gap-2.5 relative" ref={servicesDropdownRef}>
-          {/* New Service Inquiry Dropdown Button */}
+        <div className="flex items-center gap-1.5 sm:gap-2 relative" ref={servicesDropdownRef}>
+          {/* Subtle Compact Service Inquiry Button */}
           <div className="relative">
             <button
               type="button"
               onClick={() => setIsServicesOpen((prev) => !prev)}
               aria-expanded={isServicesOpen}
               aria-haspopup="true"
-              className={`flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full font-bold text-xs transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer border ${
+              className={`flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-full text-[11px] font-medium transition-all duration-200 cursor-pointer border ${
                 isServicesOpen
-                  ? "bg-[#BE123C] text-white border-[#BE123C] shadow-md shadow-rose-900/20"
+                  ? "bg-stone-200 text-stone-900 border-stone-300"
                   : isScrolled
-                  ? "bg-white text-slate-800 border-stone-200/90 hover:border-rose-400 hover:text-[#E11D48] shadow-xs"
-                  : "bg-white/15 hover:bg-white/25 text-white border-white/30 backdrop-blur-md shadow-xs"
+                  ? "bg-stone-100 hover:bg-stone-200 text-stone-700 border-stone-200"
+                  : "bg-white/10 hover:bg-white/20 text-white/90 border-white/20 backdrop-blur-xs"
               }`}
             >
               <svg
-                className="w-3.5 h-3.5 shrink-0"
+                className="w-3 h-3 shrink-0 opacity-70"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2.2"
+                strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
@@ -289,10 +289,9 @@ export default function Navbar() {
                 <rect x="14" y="14" width="7" height="7" rx="1.5" />
                 <rect x="3" y="14" width="7" height="7" rx="1.5" />
               </svg>
-              <span className="hidden sm:inline">Service Inquiry</span>
-              <span className="sm:hidden">Services</span>
+              <span>Services</span>
               <svg
-                className={`w-3 h-3 transition-transform duration-200 shrink-0 ${
+                className={`w-2.5 h-2.5 transition-transform duration-200 opacity-60 ${
                   isServicesOpen ? "rotate-180" : ""
                 }`}
                 viewBox="0 0 24 24"
@@ -307,17 +306,17 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* WhatsApp Action Button */}
+          {/* Compact WhatsApp Action Button */}
           <a
             href="https://wa.me/918369927351?text=Hello%20Arambh%20Travel!%20I%20want%20to%20inquire%20about%20your%20tours."
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-xs shadow-sm shadow-rose-900/20 transition-all duration-200 hover:scale-105 active:scale-95 shrink-0"
+            className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#E11D48]/90 hover:bg-[#BE123C] text-white font-medium text-[11px] transition-all duration-200 shrink-0"
           >
-            <svg className="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
+            <svg className="w-3 h-3 fill-current shrink-0" viewBox="0 0 24 24">
               <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.335 4.978L2 22l5.133-1.347a9.917 9.917 0 004.877 1.28h.005c5.505 0 9.989-4.478 9.99-9.985A9.99 9.99 0 0012.012 2zm4.957 14.22c-.274.774-1.585 1.5-2.194 1.56-.554.055-1.282.102-2.073-.153a10.02 10.02 0 01-4.086-2.58 10.3 10.3 0 01-2.222-3.8c-.463-.794-.741-1.72-.258-2.336.21-.266.463-.56.694-.836.223-.266.297-.456.444-.76.148-.304.074-.57-.037-.798-.111-.228-.99-2.39-1.357-3.274-.356-.862-.722-.746-.99-.76h-.846c-.297 0-.773.111-1.18.56-.407.447-1.554 1.517-1.554 3.702s1.59 4.294 1.815 4.598c.224.304 3.13 4.78 7.58 6.697 1.058.456 1.884.73 2.53 1 .918.28 1.75.24 2.41.143.738-.11 2.274-.93 2.59-1.83.317-.9 3.17-9.066.02-9.066z" />
             </svg>
-            <span className="hidden sm:inline">WhatsApp Enquiry</span>
+            <span className="hidden sm:inline">WhatsApp</span>
             <span className="sm:hidden">Enquire</span>
           </a>
 
